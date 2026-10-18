@@ -1,0 +1,20 @@
+{
+  "project": "14_TFTLCD",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 44928,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\14_TFTLCD.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 44928
+    }
+  ],
+  "sha256": "13aac18429c1003d123ac24b2a67b6c5e72fb5e0d4228f09e86d7f38141c14d5",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\14_TFTLCD\\Binary\\appli.hex",
+      "sha256": "0e483a6d94e090c7be39ea2bf16b4ff313fe40ddeb110968380fcc8514983ef5"
+    }
+  ]
+}

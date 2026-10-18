@@ -1,0 +1,20 @@
+{
+  "project": "51_T9_Pinyin",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 170336,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\51_T9_Pinyin.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 170336
+    }
+  ],
+  "sha256": "13a8a8cd8a2f0c4a4ddccfbf48f95f323ac9839027f7c77129a79b931d734c87",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\51_T9_Pinyin\\Binary\\appli.hex",
+      "sha256": "8dfd38b31671bf2f5f4e95b98e76466e7a52999c533a78717c752c59d37db4da"
+    }
+  ]
+}

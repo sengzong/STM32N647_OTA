@@ -1,0 +1,20 @@
+{
+  "project": "16_USMART",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 61088,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\16_USMART.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 61088
+    }
+  ],
+  "sha256": "834e95a1fb7c0f5b70c31d3aacfbab5e79c5bc2c9fa33e16710b13f140a1badc",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\16_USMART\\Binary\\appli.hex",
+      "sha256": "1257f2ceede4d50ef9ce32bd996e8f8140bdee5e753cf1d471893df58bdd3fc6"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "project": "19_DMA",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 53824,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\19_DMA.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 53824
+    }
+  ],
+  "sha256": "fecde06243b740b107c5d97435c0e00e0aeb3fac7cf80c050e483768c0f74230",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\19_DMA\\Binary\\appli.hex",
+      "sha256": "b380a0e5b9657035c13225ea09a5a518daa721e62c453285ad89e3446ce929dc"
+    }
+  ]
+}

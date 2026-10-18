@@ -1,0 +1,20 @@
+{
+  "project": "18_RNG",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 35552,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\18_RNG.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 35552
+    }
+  ],
+  "sha256": "38df4eed8ed4024199e629db8ed1a8cdd00ceed9363a58903542f3b3e90a74c3",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\18_RNG\\Binary\\appli.hex",
+      "sha256": "0beaaa3d49e7bbd0c290ba2e2db2803788c3aaeb8c4b7ce7e009337e8bad560d"
+    }
+  ]
+}

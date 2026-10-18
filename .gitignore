@@ -10,6 +10,13 @@ Release/
 
 # ----- 个人本地文件(不开源) -----
 LOCAL_NOTES.md
+.vscode/
+.workbuddy/memory/
 
 # ----- 杂项 -----
 *.bak
+Build/
+__pycache__/
+Binary/991_triple_buffer/
+Binary/991_performance/
+Binary/991_realtime_60_trial/

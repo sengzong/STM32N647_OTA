@@ -1,0 +1,20 @@
+{
+  "project": "11_TPAD",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 5920,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\11_TPAD.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 5920
+    }
+  ],
+  "sha256": "370fe172d304684df6fcc31a3b9179a004ba935e34094a62c585fdfd0a1436fb",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\11_TPAD\\Binary\\appli.hex",
+      "sha256": "bb890373cb3fab174cffd386e698fb222f5ae2de20d5b4985c5a525a39e07d46"
+    }
+  ]
+}

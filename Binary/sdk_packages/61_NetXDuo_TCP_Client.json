@@ -1,0 +1,20 @@
+{
+  "project": "61_NetXDuo_TCP_Client",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 80192,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\61_NetXDuo_TCP_Client.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 80192
+    }
+  ],
+  "sha256": "2fe8cf7d21c7777b61d0562db7cbb2a0d1889e64d9ff8aad49d2e0ef20a3e0d3",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\61_NetXDuo_TCP_Client\\Binary\\appli.hex",
+      "sha256": "bada4682ca1e8a946cc96a946b0bcc93a9f9ccc4f34813106e0cc122f73646f0"
+    }
+  ]
+}

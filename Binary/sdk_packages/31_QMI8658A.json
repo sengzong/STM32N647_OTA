@@ -1,0 +1,20 @@
+{
+  "project": "31_QMI8658A",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 59456,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\31_QMI8658A.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 59456
+    }
+  ],
+  "sha256": "0078b387ac06638f57afdb579412eea8dc455510b544d93678a95b3c3ca683de",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\31_QMI8658A\\Binary\\appli.hex",
+      "sha256": "09379cbd856ad1c40660d7bbd5ba5610c82a52651d9c361b8852c136224aa602"
+    }
+  ]
+}

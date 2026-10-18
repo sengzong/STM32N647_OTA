@@ -1,0 +1,20 @@
+{
+  "project": "28_Remote",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 38272,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\28_Remote.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 38272
+    }
+  ],
+  "sha256": "7f659981bb074dae2ca17ec928ed913f9a9eb77b2bbc68403593f840b406276b",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\28_Remote\\Binary\\appli.hex",
+      "sha256": "239e5ec064228bacd4d7205a6d02d19805e03f214dd0e663615a95edca952e90"
+    }
+  ]
+}

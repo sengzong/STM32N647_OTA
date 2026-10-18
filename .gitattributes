@@ -1,0 +1,4 @@
+# Preserve published firmware and manifest bytes for SHA256 verification.
+Binary/** -text
+Binary/** whitespace=cr-at-eol
+Binary/**/*.hex -diff

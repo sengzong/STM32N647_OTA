@@ -1,0 +1,20 @@
+{
+  "project": "40_Chinese_Show",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 76288,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\40_Chinese_Show.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 76288
+    }
+  ],
+  "sha256": "f44ea680878d7e074917a7f97d94702030a60c0c21d1f807040953d664662100",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\40_Chinese_Show\\Binary\\appli.hex",
+      "sha256": "6bd744726ed7e3bb641242335e07bd360b5312bcbfddc6f16a1a9fb194380258"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "project": "32_QMC6308",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 65792,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\32_QMC6308.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 65792
+    }
+  ],
+  "sha256": "476e9f8f82937b7090cc5f56e25cdd9c21635f1e617d4001a89740c6f204d482",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\32_QMC6308\\Binary\\appli.hex",
+      "sha256": "6566d2872d7a563017170186bcc3fd631ebb8a476cb51e192025f5d0c2f65d34"
+    }
+  ]
+}

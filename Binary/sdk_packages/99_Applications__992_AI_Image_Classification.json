@@ -1,0 +1,28 @@
+{
+  "project": "99_Applications__992_AI_Image_Classification",
+  "profile": 2,
+  "clock_mhz": 800,
+  "image_bytes": 10186577,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\99_Applications__992_AI_Image_Classification.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 970816
+    },
+    {
+      "address": "0x70200000",
+      "bytes": 9139025
+    }
+  ],
+  "sha256": "e379ce7952cd9a470173cdc45fb71d1ccaa856a2c62de8a4a4e47ce58ab9607c",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\992_AI_Image_Classification\\Binary\\appli.hex",
+      "sha256": "92c3a3ee50c3918426df168ecf8d586fd614f3648733438cebdc0b7092f2c36a"
+    },
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\992_AI_Image_Classification\\Binary\\network-data.hex",
+      "sha256": "b71bc1e4740b5406dfc6f00c67e7c2888b37d39c0d90e4e18908cebc29c0f642"
+    }
+  ]
+}

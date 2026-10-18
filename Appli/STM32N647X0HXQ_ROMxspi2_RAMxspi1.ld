@@ -34,17 +34,17 @@
 /* Entry Point */
 ENTRY(Reset_Handler)
 _Min_Heap_Size = 0x200; /* required amount of heap */
-_Min_Stack_Size = 0x800; /* required amount of stack */
+_Min_Stack_Size = 0x2000; /* required amount of stack */
 
 /* Highest address of the user mode stack */
-_estack = ORIGIN(RAM) + LENGTH(RAM); /* end of "RAM" Ram type memory */
+_estack = 0x341F8000; /* Keep the MSP below Ethernet descriptors and pool. */ /* end of "RAM" Ram type memory */
 _sstack = _estack - _Min_Stack_Size;
 
 /* Memories definition */
 MEMORY
 {
-  ROM    (xrw)    : ORIGIN = 0x70100400,   LENGTH = 31473K
-  RAM    (xrw)    : ORIGIN = 0x34000000,   LENGTH = 2048K
+  ROM    (xrw)    : ORIGIN = 0x70100400,   LENGTH = 512K - 64
+  RAM    (xrw)    : ORIGIN = 0x34000100,   LENGTH = 2048K - 256
   EXTRAM (rw)     : ORIGIN = 0x90000000,   LENGTH = 32M  
 }
 
@@ -197,6 +197,9 @@ SECTIONS
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
   } >RAM
+
+  ASSERT(ADDR(._user_heap_stack) + SIZEOF(._user_heap_stack) <= 0x341B0000,
+         "Application data overlaps retained OTA handoff")
 
   .tcp_sec (NOLOAD) :
   {

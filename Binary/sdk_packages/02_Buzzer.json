@@ -1,0 +1,20 @@
+{
+  "project": "02_Buzzer",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 3744,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\02_Buzzer.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 3744
+    }
+  ],
+  "sha256": "a70c1a69bad4e067474a2ae19742856a32c29d43db0a6fc1a2df38e7221a6149",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\02_Buzzer\\Binary\\appli.hex",
+      "sha256": "ce2fc4c1f080c2247f877ed8bc1a91576926c290bad18294686c18bcc3bea385"
+    }
+  ]
+}

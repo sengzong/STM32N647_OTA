@@ -1,0 +1,32 @@
+{
+  "project": "99_Applications__995_AI_Hand_Landmarks",
+  "profile": 2,
+  "clock_mhz": 800,
+  "image_bytes": 6506881,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\99_Applications__995_AI_Hand_Landmarks.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 1040352
+    },
+    {
+      "address": "0x70200000",
+      "bytes": 1198081
+    },
+    {
+      "address": "0x70400000",
+      "bytes": 3362177
+    }
+  ],
+  "sha256": "75b91e7550facac3fe55dd0d343aaa9abc27f5b38dadfc9d79967eec0cd456f9",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\995_AI_Hand_Landmarks\\Binary\\appli.hex",
+      "sha256": "dc40b04dc28f0585e2ce27ac5b1c3ecd04fcc84c3829f3319082feb5890d2586"
+    },
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\995_AI_Hand_Landmarks\\Binary\\network-data.hex",
+      "sha256": "a2586ac29252c2d17ec8508fc848c56e15367a1f92804cbd2fc4410d639b6265"
+    }
+  ]
+}

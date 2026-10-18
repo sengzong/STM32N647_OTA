@@ -1,0 +1,20 @@
+{
+  "project": "09_General_Purpose_Timer__094_Slave",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 30944,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\09_General_Purpose_Timer__094_Slave.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 30944
+    }
+  ],
+  "sha256": "650632324491f0f9e745f7a7988c9bdd27dcd775ec8a04f7d160e3ba667bddbf",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\09_General_Purpose_Timer\\094_Slave\\Binary\\appli.hex",
+      "sha256": "b4f4a0c87a5d996565cae88316e748b55b2e28861eac0aca515e57d10b15edbb"
+    }
+  ]
+}

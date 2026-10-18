@@ -1,0 +1,28 @@
+{
+  "project": "99_Applications__994_AI_Multi_Pose_Estimation",
+  "profile": 2,
+  "clock_mhz": 800,
+  "image_bytes": 4391137,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\99_Applications__994_AI_Multi_Pose_Estimation.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 607808
+    },
+    {
+      "address": "0x70200000",
+      "bytes": 3343585
+    }
+  ],
+  "sha256": "1e7044645853cb64ddca527435708a1d467ea7cfeb2816671bdb0d7a812ef922",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\994_AI_Multi_Pose_Estimation\\Binary\\appli.hex",
+      "sha256": "af72771fdeaa8b4e085318559dcb4d3df3f9e09255f77ef02a89082b2aa2496a"
+    },
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\994_AI_Multi_Pose_Estimation\\Binary\\network-data.hex",
+      "sha256": "5f65730223cf980cfb6d64fb159400552fa086a4646eea5fb72c692101d67d4e"
+    }
+  ]
+}

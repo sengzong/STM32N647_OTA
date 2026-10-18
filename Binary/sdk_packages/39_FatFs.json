@@ -1,0 +1,20 @@
+{
+  "project": "39_FatFs",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 87168,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\39_FatFs.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 87168
+    }
+  ],
+  "sha256": "415333b38662f26e7a6979fa58fcb8dfd4bf97574706a7c2cf82bc977f2a8a50",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\39_FatFs\\Binary\\appli.hex",
+      "sha256": "f5b0c5e804e312c9dea50f835c07cb4592e0e30e9b57d1865297b6944aac9af2"
+    }
+  ]
+}

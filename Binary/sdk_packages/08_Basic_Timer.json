@@ -1,0 +1,20 @@
+{
+  "project": "08_Basic_Timer",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 5280,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\08_Basic_Timer.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 5280
+    }
+  ],
+  "sha256": "43dd8881b86b0f21514aa1d4a1595fe80d89734539de0942a46c0561fc52192b",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\08_Basic_Timer\\Binary\\appli.hex",
+      "sha256": "2699eb7a7223f26b7b9041c6e5888eb01e1125f066a1dacce2ce229967bb9fb3"
+    }
+  ]
+}

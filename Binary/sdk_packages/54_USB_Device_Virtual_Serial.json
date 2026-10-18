@@ -1,0 +1,20 @@
+{
+  "project": "54_USB_Device_Virtual_Serial",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 56832,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\54_USB_Device_Virtual_Serial.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 56832
+    }
+  ],
+  "sha256": "20d03cf881c82dfceb3e168d066d792081576af240e8427dbc723224a07ab01b",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\54_USB_Device_Virtual_Serial\\Binary\\appli.hex",
+      "sha256": "dc4a5813a60e551be009b431817cbc81fab650eff5526b235be94cc3df6d4560"
+    }
+  ]
+}

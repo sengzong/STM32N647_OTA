@@ -1,0 +1,20 @@
+{
+  "project": "42_JPEG",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 341888,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\42_JPEG.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 341888
+    }
+  ],
+  "sha256": "43d9bd6e170406b58aee0fc8ab399f253c1f922fec08ca3c066720f7661cf595",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\42_JPEG\\Binary\\appli.hex",
+      "sha256": "753cddb7f48e8377eedf1405ba54ee370ebddd8457011d192e7b31d53d4a2e46"
+    }
+  ]
+}

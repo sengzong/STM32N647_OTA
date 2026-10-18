@@ -1,0 +1,20 @@
+{
+  "project": "58_ThreadX_Semaphore",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 11456,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\58_ThreadX_Semaphore.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 11456
+    }
+  ],
+  "sha256": "85f659b584889d85b3516752b0005081a3480c44f67f33b4e0fbb8d953fd80c5",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\58_ThreadX_Semaphore\\Binary\\appli.hex",
+      "sha256": "1a6f37619d15486579526add26c96128d94eca34bce576005537554d84d5b0df"
+    }
+  ]
+}

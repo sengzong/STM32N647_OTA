@@ -1,0 +1,20 @@
+{
+  "project": "45_Recorder",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 81184,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\45_Recorder.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 81184
+    }
+  ],
+  "sha256": "3aaf6c1c72b056ab9649fb4e0ef250698913860e7e4afa6bb195712768ccb64f",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\45_Recorder\\Binary\\appli.hex",
+      "sha256": "43e1c1ba2c9e376f21623ae7806998b4b9e1cbee50cc07213ee0d5b78a2700ef"
+    }
+  ]
+}

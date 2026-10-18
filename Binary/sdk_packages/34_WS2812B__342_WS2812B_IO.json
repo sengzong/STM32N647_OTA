@@ -1,0 +1,20 @@
+{
+  "project": "34_WS2812B__342_WS2812B_IO",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 13824,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\34_WS2812B__342_WS2812B_IO.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 13824
+    }
+  ],
+  "sha256": "013ddc5f57cf309b900fc37b704a425904dabe122e2928c4e1ded4c6672f6e55",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\34_WS2812B\\342_WS2812B_IO\\Binary\\appli.hex",
+      "sha256": "863d804853d0524c988f164010687bdab28de809f81dcbfa4c5c0f60a05a1e9a"
+    }
+  ]
+}

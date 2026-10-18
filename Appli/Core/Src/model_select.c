@@ -29,6 +29,7 @@ static ui_page_e g_page = PAGE_SELECT;
 static ui_page_e g_page_drawn = PAGE_COUNT;
 static int8_t    g_selected = -1;
 static uint8_t   g_do_switch = 0;          /* 确认页 Yes 按下 -> 触发切换 */
+static int      g_switch_error;
 
 /* 槽位项描述(刷新自 g_slots) */
 static char     g_item[UI_SLOTS][OTA_SLOT_DESC_MAX + 8];
@@ -88,14 +89,19 @@ static void slot_refresh_items(void)
         if (g_slots[i].ready)
         {
             if (g_slots[i].desc[0])
-                snprintf(g_item[i], sizeof(g_item[i]), "Slot-%u  %s",
-                         (unsigned)(i + 1), g_slots[i].desc);   /* 描述为主 */
+                snprintf(g_item[i], sizeof(g_item[i]), "Latest: %s", g_slots[i].desc);
             else
-                snprintf(g_item[i], sizeof(g_item[i]), "Slot-%u  (无描述)",
-                         (unsigned)(i + 1));
+                snprintf(g_item[i], sizeof(g_item[i]), "Latest firmware");
         }
         else
-            snprintf(g_item[i], sizeof(g_item[i]), "Slot-%u  (空)", (unsigned)(i + 1));
+            snprintf(g_item[i], sizeof(g_item[i]), "No staged firmware");
+    }
+    /* There is one staging image, so a valid image is selected immediately. */
+    if (g_selected < 0 || g_selected >= UI_SLOTS || !g_item_ready[(uint8_t)g_selected])
+    {
+        g_selected = -1;
+        for (i = 0; i < UI_SLOTS; i++)
+            if (g_item_ready[i]) { g_selected = (int8_t)i; break; }
     }
 }
 
@@ -138,7 +144,7 @@ static void draw_item(uint8_t idx, uint8_t selected)
 static void draw_yes_button(char *label, uint8_t available)
 {
     uint16_t frame = available ? C_TEXT : C_DIS;
-    uint16_t fg    = C_TEXT;
+    uint16_t fg    = available ? C_TEXT : C_DIS;
 
     cpu_fill(B_X, B_Y, B_W, B_H, C_BG);
     rgblcd_draw_rectangle(B_X, B_Y, B_X + B_W - 1, B_Y + B_H - 1, frame);
@@ -157,17 +163,22 @@ static void draw_back_button(void)
 static void draw_select_page(int8_t selected)
 {
     uint8_t i;
+    char hint[64];
     uint16_t ok = (selected >= 0) ? g_item_ready[(uint8_t)selected] : 0;
 
     cpu_fill(0, 0, rgblcddev.width, rgblcddev.height, C_BG);
     rgblcd_show_string(L_X, (TITLE_H - 32) / 2, rgblcddev.width - L_X * 2, 32, 32,
-                       "Firmware Switch - Select", C_TEXT);
+                       "Install Latest Firmware", C_TEXT);
     rgblcd_draw_rectangle(0, TITLE_H - 2, rgblcddev.width - 1, TITLE_H - 1, C_TEXT);
 
     for (i = 0; i < UI_SLOTS; i++)
         draw_item(i, (selected == (int8_t)i) ? 1 : 0);
 
-    rgblcd_show_string(L_X, HINT_Y, L_W, 24, 24, "select slot, then Yes to switch:", C_TEXT);
+    if (g_switch_error != 0)
+        snprintf(hint, sizeof(hint), "Install failed (%d). Please resend.", g_switch_error);
+    else
+        snprintf(hint, sizeof(hint), "%s", ok ? "Press Yes to review installation" : "Send firmware from the computer first");
+    rgblcd_show_string(L_X, HINT_Y, L_W, 24, 24, hint, C_TEXT);
     draw_yes_button((char *)"Yes", ok);
 }
 
@@ -180,7 +191,7 @@ static void draw_confirm_page(int8_t selected)
     rgblcd_show_string(L_X, rgblcddev.height / 8, L_W, 32, 32,
                        (char *)g_item[(uint8_t)selected], C_TEXT);
     rgblcd_show_string(L_X, rgblcddev.height / 5, L_W, 24, 24,
-                       "Flash boot area & reboot to this firmware.", C_DIS);
+                       "Save previous version, install and reboot.", C_DIS);
     draw_back_button();
     draw_yes_button((char *)"Yes", 1);
 }
@@ -205,7 +216,7 @@ static void draw_progress_page(void)
     snprintf(buf, sizeof(buf), "Receiving %lu%%", (unsigned long)(pct / 10u));
     rgblcd_show_string(L_X, rgblcddev.height / 3 + 24, L_W, 32, 32, buf, C_TEXT);
     rgblcd_show_string(L_X, rgblcddev.height / 3 + 80, L_W, 24, 24,
-                       "storing into empty slot, keep powered", C_DIS);
+                       "saving latest firmware, keep powered", C_DIS);
 }
 
 /* "切换中…" 覆盖页, 画完即调 ota_switch_slot(内部复位, 不返回) */
@@ -270,13 +281,14 @@ static void ui_select_follow(uint16_t x, uint16_t y)
     for (i = 0; i < UI_SLOTS; i++)
     {
         uint16_t iy = L_Y + i * (I_H + I_GAP);
-        if (in_rect(x, y, L_X, iy, L_W, I_H))
+        if (g_item_ready[i] && in_rect(x, y, L_X, iy, L_W, I_H))
         {
             if (g_selected != (int8_t)i)
             {
                 g_selected = (int8_t)i;
                 if (old >= 0) draw_item((uint8_t)old, 0);
                 draw_item((uint8_t)i, 1);
+                draw_yes_button((char *)"Yes", 1);
                 fb_flush();
             }
             break;
@@ -286,6 +298,7 @@ static void ui_select_follow(uint16_t x, uint16_t y)
 
 static void ui_touch_process(uint16_t x, uint16_t y)
 {
+    if (g_ota_receiving || x >= rgblcddev.width || y >= rgblcddev.height) return;
     switch (g_page)
     {
         case PAGE_SELECT:
@@ -294,11 +307,17 @@ static void ui_touch_process(uint16_t x, uint16_t y)
                 in_rect(x, y, B_X, B_Y, B_W, B_H))
             {
                 g_page = PAGE_CONFIRM;
+                printf("UI: installation confirmation opened\r\n");
             }
             break;
 
         case PAGE_CONFIRM:
-            if (in_rect(x, y, B_X, B_Y, B_W, B_H))  g_do_switch = 1;   /* Yes */
+            if (g_selected >= 0 && g_item_ready[(uint8_t)g_selected] &&
+                in_rect(x, y, B_X, B_Y, B_W, B_H))
+            {
+                g_do_switch = 1;
+                printf("UI: install confirmed, slot=%d\r\n", g_selected);
+            }
             else if (in_rect(x, y, L_X, HINT_Y - 40, 120, 44))  g_page = PAGE_SELECT;
             break;
 
@@ -311,16 +330,24 @@ static void ui_touch_process(uint16_t x, uint16_t y)
 void model_select_run(void)
 {
     uint8_t last_press = 0;
+    uint8_t was_receiving = 0;
+    uint8_t touch_status;
     uint16_t x, y;
 
     HAL_GPIO_WritePin(GPIOG, GPIO_PIN_10, GPIO_PIN_SET);
     HAL_GPIO_WritePin(GPIOE, GPIO_PIN_10, GPIO_PIN_SET);
-    tp_dev.init();
+    touch_status = tp_dev.init();
     layout_init();
     g_page = PAGE_SELECT;
     g_selected = -1;
     g_do_switch = 0;
+    g_switch_error = 0;
     slot_refresh_items();
+
+    printf("UI: LCD=%04X size=%ux%u touch=%02X init=%u selected=%d\r\n",
+           rgblcddev.id, rgblcddev.width, rgblcddev.height,
+           tp_dev.touchtype, touch_status, g_selected);
+    printf("UI: Yes area x=%u..%u y=%u..%u\r\n", B_X, B_X+B_W-1, B_Y, B_Y+B_H-1);
 
     ui_dispatch();
 
@@ -331,19 +358,38 @@ void model_select_run(void)
         tp_dev.scan(0);
         press = (tp_dev.sta & TP_PRES_DOWN) ? 1 : 0;
 
-        if (press) { x = tp_dev.x[0]; y = tp_dev.y[0]; ui_select_follow(x, y); }
-        if (press && !last_press) { x = tp_dev.x[0]; y = tp_dev.y[0]; ui_touch_process(x, y); }
+        if (was_receiving && !g_ota_receiving)
+        {
+            g_page = PAGE_SELECT;
+            g_page_drawn = PAGE_COUNT;
+            g_switch_error = 0;
+            g_do_switch = 0;
+        }
+        if (g_ota_receiving) g_do_switch = 0;
+        was_receiving = g_ota_receiving;
+        if (!g_ota_receiving)
+        {
+            if (press) { x = tp_dev.x[0]; y = tp_dev.y[0]; ui_select_follow(x, y); }
+            if (press && !last_press)
+            {
+                x = tp_dev.x[0]; y = tp_dev.y[0];
+                printf("UI: touch x=%u y=%u page=%u\r\n", x, y, (unsigned)g_page);
+                ui_touch_process(x, y);
+            }
+        }
         last_press = press;
 
-        if (g_do_switch)
+        if (g_do_switch && !g_ota_receiving)
         {
             int s;
             g_do_switch = 0;
             draw_switching_page(g_selected);
+            /* 只写引导记录 + 复位: 拷贝/校验/回滚由 FSBL 做, 成功不返回 */
             s = ota_switch_slot((uint32_t)((g_selected >= 0) ? (uint8_t)g_selected : 0u));
-            if (s != 0)   /* 代理复位成功后不返回到这里; 能到这 = 切换失败 */
+            if (s != 0)   /* 能返回到这里 = 记录没写成功, 没切 */
             {
                 printf("SWITCH FAIL rc=%d\r\n", s);
+                g_switch_error = s;
                 g_page = PAGE_SELECT;
                 g_page_drawn = PAGE_COUNT;   /* 强制回到列表 */
             }
@@ -352,6 +398,11 @@ void model_select_run(void)
                 for (;;) { }   /* 理论走不到 */
             }
         }
+
+        /* 本固件若是 FSBL 刚拷进来的"试运行"版本, 跑满 3 秒且自检通过就确认为正式版本;
+         * 不确认则下次复位由 FSBL 回滚。只在第一次生效, 之后的调用是空转。
+         * 放在主循环里(而不是阻塞 3 秒)是为了让触摸在等待期内仍然响应。 */
+        ota_confirm_poll();
 
         ui_dispatch();
         tx_thread_sleep(1);

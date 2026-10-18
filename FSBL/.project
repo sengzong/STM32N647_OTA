@@ -126,5 +126,50 @@
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Middlewares/ST/STM32_ExtMem_Manager/user/stm32_user_driver.c</locationURI>
 		</link>
+		<!-- Board NOR driver overrides the weak ExtMem user-driver stubs. -->
+		<link>
+			<name>Drivers/BSP/HyperRAM/hyperram.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/BSP/HyperRAM/hyperram.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32N6xx_HAL_Driver/stm32n6xx_hal_uart.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/STM32N6xx_HAL_Driver/Src/stm32n6xx_hal_uart.c</locationURI>
+		</link>
+		<!-- main.c drives XSPI1 (HyperRAM) and XSPI2 (NOR) itself via HAL_XSPI_Init /
+		     HAL_XSPIM_Config / HAL_XSPI_HyperbusCfg, and hyperram.c calls
+		     HAL_XSPI_HyperbusCmd / MemoryMapped / Transmit / Receive / Abort, so the
+		     XSPI HAL driver must be linked too (it was missing and broke the link). -->
+		<link>
+			<name>Drivers/STM32N6xx_HAL_Driver/stm32n6xx_hal_xspi.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/STM32N6xx_HAL_Driver/Src/stm32n6xx_hal_xspi.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/BSP/NORFlash/extmem_user_driver.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/BSP/NORFlash/extmem_user_driver.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/BSP/NORFlash/norflash.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/BSP/NORFlash/norflash.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/BSP/NORFlash/norflash_by25fq128el.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/BSP/NORFlash/norflash_by25fq128el.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/BSP/NORFlash/norflash_mx25um25645g.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/BSP/NORFlash/norflash_mx25um25645g.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/BSP/NORFlash/norflash_xspi.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/BSP/NORFlash/norflash_xspi.c</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>

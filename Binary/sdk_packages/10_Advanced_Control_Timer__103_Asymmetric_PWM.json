@@ -1,0 +1,20 @@
+{
+  "project": "10_Advanced_Control_Timer__103_Asymmetric_PWM",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 8064,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\10_Advanced_Control_Timer__103_Asymmetric_PWM.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 8064
+    }
+  ],
+  "sha256": "ea86a53a4e6262ea30119bf464f4d7df6fff671e351719552b2dca74c5305733",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\10_Advanced_Control_Timer\\103_Asymmetric_PWM\\Binary\\appli.hex",
+      "sha256": "2c8a5b0bae5d1df9c198c13aa386309ef33873f5d4ca617eb5a64068fc48b063"
+    }
+  ]
+}

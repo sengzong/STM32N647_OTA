@@ -1,0 +1,28 @@
+{
+  "project": "99_Applications__991_AI_People_Detection",
+  "profile": 2,
+  "clock_mhz": 800,
+  "image_bytes": 4065633,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\99_Applications__991_AI_People_Detection.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 473984
+    },
+    {
+      "address": "0x70200000",
+      "bytes": 3018081
+    }
+  ],
+  "sha256": "bd2ed6f3b9b9855446c9e5f3ca855fa8ada7ce946ae1c021d874d0b2b952faec",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\991_AI_People_Detection\\Binary\\appli.hex",
+      "sha256": "79b5639746abe50b05e074770a821a38651b086cb49a4b4bcbf209955b472b11"
+    },
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\991_AI_People_Detection\\Binary\\network-data.hex",
+      "sha256": "0f08471b344fe7b68dece1bb8cfd1e0614fe4d92349710e63727fa38a9c7e246"
+    }
+  ]
+}

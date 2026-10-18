@@ -1,0 +1,20 @@
+{
+  "project": "09_General_Purpose_Timer__091_Interrupt",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 5728,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\09_General_Purpose_Timer__091_Interrupt.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 5728
+    }
+  ],
+  "sha256": "60438f3b10b210ab87095aa74c864036798f198bd8c51ebff39f692967331570",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\09_General_Purpose_Timer\\091_Interrupt\\Binary\\appli.hex",
+      "sha256": "49648ddbb33d51cc4a53e26e140230bd057226f6ba22c13a9343aad2d0c9d0d0"
+    }
+  ]
+}

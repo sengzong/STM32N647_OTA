@@ -1,0 +1,20 @@
+{
+  "project": "03_Button",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 4128,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\03_Button.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 4128
+    }
+  ],
+  "sha256": "0b9dc669d7f2e7e086e16bef6d18fc374180afc05cb2d3787eeb90c1c4159a73",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\03_Button\\Binary\\appli.hex",
+      "sha256": "3f825918a5ee7f732cc28d5c886ac77d0ec70dc2d40925a5fcb4a862306a9a05"
+    }
+  ]
+}

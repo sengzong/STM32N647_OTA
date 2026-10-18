@@ -1,0 +1,20 @@
+{
+  "project": "22_PWMDAC",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 42624,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\22_PWMDAC.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 42624
+    }
+  ],
+  "sha256": "e3fd67426c28d29893f18ccecf54cd7f28d23373f10ef037d4077f60d1903ca9",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\22_PWMDAC\\Binary\\appli.hex",
+      "sha256": "ee32ba6a46ebe82e56179653c8c4bb962ed6fc552856ecee3166725b638e29a4"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "project": "23_EEPROM",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 37632,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\23_EEPROM.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 37632
+    }
+  ],
+  "sha256": "93b78978d4263e8aa06462925d7ace943d75a333a5f84bc54682ff164ec9dd7c",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\23_EEPROM\\Binary\\appli.hex",
+      "sha256": "7a177b8246fd2812c328136f0cff0a62edcd8a403d0281dc2ead8aa6103a09ca"
+    }
+  ]
+}

@@ -5,8 +5,8 @@ ota_gui.py - STM32N647 OTA 小软件(带描述, 多槽位) —— 无依赖(纯�
 =============================================================================
 运行:  python ota_gui.py
 然后浏览器打开: http://127.0.0.1:17800
-在页面拖入 appli.bin + 填描述 + 点发送。后端监听 8080, 等板子连接后发送容器:
-[ magic u32 "OFW2" | ver u32 | desc_len u32 | img_len u32 | desc | img ]
+在页面选择 .ota 升级包或应用 .bin/.hex，填描述后点发送。
+后端监听 8080，等待板子连接。SDK .ota 包保留应用、模型和启动配置。
 """
 import base64
 import json
@@ -15,6 +15,7 @@ import threading
 import socket
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
+from ota_protocol import make_transfer, make_rollback, send_firmware
 
 MAGIC = 0x3257464F   # "OFW2"
 VER   = 2
@@ -32,84 +33,38 @@ def _log(msg):
             _state["log"] = _state["log"][-200:]
 
 
-def hex_to_bin(text):
-    """Intel HEX(文本) -> (原始镜像字节, 基址)。支持 00/01/02/04/05 记录。"""
-    buf_lo = None
-    buf_hi = None
-    upper = 0
-    rows = []
-    for line in text.splitlines():
-        line = line.strip()
-        if not line or line[0] != ":":
-            continue
-        b = bytes.fromhex(line[1:])
-        c, a, t = b[0], (b[1] << 8) | b[2], b[3]
-        d = b[4:4 + c]
-        if t == 0x00:
-            addr = upper + a
-            if buf_lo is None or addr < buf_lo:
-                buf_lo = addr
-            e = addr + c
-            if buf_hi is None or e > buf_hi:
-                buf_hi = e
-            rows.append((addr, d))
-        elif t == 0x04:
-            upper = ((d[0] << 8) | d[1]) << 16
-        elif t == 0x02:
-            upper = ((d[0] << 8) | d[1]) << 4
-        elif t == 0x01:
-            break
-    if buf_lo is None:
-        raise ValueError("HEX 里没有数据记录")
-    buf = bytearray(buf_hi - buf_lo)
-    for addr, d in rows:
-        buf[addr - buf_lo: addr - buf_lo + len(d)] = d
-    return bytes(buf), buf_lo
-
-
-def _send_worker(filename, desc, data):
-    with _lock:
-        _state["phase"] = "listen"
-        _state["sent"] = 0
-        _state["total"] = 0
-        _state["file"] = filename
-        _state["desc"] = desc
-    _log(f"监听 :{BOARD_PORT}，等待板子连接…")
+def _send_worker(filename, desc, payload, crc, rollback=False):
+    def progress(sent, total):
+        with _lock:
+            _state["sent"], _state["total"] = sent, total
+            if sent == total:
+                _state["phase"] = "verifying"
     try:
-        srv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        srv.bind(("0.0.0.0", BOARD_PORT))
-        srv.listen(1)
-        conn, addr = srv.accept()
-        srv.close()
-        _log(f"板子已连接 {addr[0]}:{addr[1]}")
-    except OSError as e:
-        _log(f"!! 监听失败: {e}")
-        with _lock: _state["phase"] = "idle"
-        return
-
-    desc_b = desc.encode("utf-8")
-    hdr = struct.pack("<IIII", MAGIC, VER, len(desc_b), len(data))
-    payload = hdr + desc_b + data
-    with _lock: _state["total"] = len(payload)
-    with _lock: _state["phase"] = "sending"
-
-    sent = 0
-    try:
-        while sent < len(payload):
-            n = conn.send(payload[sent: sent + 65536])
-            if n == 0:
-                break
-            sent += n
-            with _lock: _state["sent"] = sent
-    except OSError as e:
-        _log(f"!! 发送中断: {e}")
-    finally:
-        conn.close()
-    with _lock:
-        _state["phase"] = "done"
-        _state["sent"] = sent
-    _log(f"发送完成 {sent:,}/{len(payload):,} B")
+        with _lock:
+            _state.update(phase="listen", sent=0, total=len(payload), file=filename, desc=desc)
+        _log(f"监听 :{BOARD_PORT}；现在复位或重新上电板子，进入独立升级窗口…")
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as srv:
+            srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            srv.settimeout(180)
+            srv.bind(("0.0.0.0", BOARD_PORT))
+            srv.listen(1)
+            conn, addr = srv.accept()
+            with conn:
+                _log(f"板子已连接 {addr[0]}:{addr[1]}")
+                with _lock:
+                    _state["phase"] = "sending"
+                slot = send_firmware(conn, payload, crc, progress)
+        if rollback:
+            _log("板子已校验回滚备份并接受请求，即将恢复上一版固件。")
+        else:
+            _log(f"板子已校验并保存最新固件，CRC32={crc:08X}。")
+            _log("Agent 模式将启动新固件；应用模式请在屏幕确认切换。")
+        with _lock:
+            _state["phase"] = "done"
+    except (OSError, ValueError) as exc:
+        _log(f"升级失败：{exc}")
+        with _lock:
+            _state["phase"] = "error"
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -117,6 +72,7 @@ class Handler(BaseHTTPRequestHandler):
         body = json.dumps(obj).encode("utf-8")
         self.send_response(200)
         self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Cache-Control", "no-store")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
@@ -131,6 +87,7 @@ class Handler(BaseHTTPRequestHandler):
             body = HTML.encode("utf-8")
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Cache-Control", "no-store")
             self.send_header("Content-Length", str(len(body)))
             self.end_headers()
             self.wfile.write(body)
@@ -145,18 +102,24 @@ class Handler(BaseHTTPRequestHandler):
             return
         fn = j.get("file", "")
         desc = j.get("desc", "").strip()
-        base = None
-        if fn.lower().endswith(".hex"):
-            try:
-                data, base = hex_to_bin(data.decode("utf-8", "replace"))
-                _log(f"HEX 解析 → 原始镜像 {len(data):,} B @0x{base:08X}")
-            except Exception as e:
-                self._send_json({"ok": False, "err": f"hex: {e}"})
-                return
-        if not data or not desc:
-            self._send_json({"ok": False, "err": "empty"})
+        rollback = j.get("action") == "rollback"
+        try:
+            if not rollback:
+                payload, crc = make_transfer(fn, data, desc)
+            else:
+                fn, desc = "回滚上一版", "回滚上一版"
+                payload, crc = make_rollback()
+        except (ValueError, UnicodeError) as exc:
+            self._send_json({"ok": False, "err": str(exc)})
             return
-        t = threading.Thread(target=_send_worker, args=(fn, desc, data), daemon=True)
+        with _lock:
+            busy = _state["phase"] in ("listen", "sending", "verifying")
+            if not busy:
+                _state["phase"] = "listen"
+        if busy:
+            self._send_json({"ok": False, "err": "已有升级任务，请等待完成或超时"})
+            return
+        t = threading.Thread(target=_send_worker, args=(fn, desc, payload, crc, rollback), daemon=True)
         t.start()
         self._send_json({"ok": True})
 
@@ -187,16 +150,16 @@ HTML = r"""<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
  .log{margin-top:14px;background:#11151a;color:#9fe8b0;border-radius:8px;padding:10px;font:12px/1.5 Consolas,monospace;height:150px;overflow:auto;white-space:pre-wrap}
  .hint{font-size:12px;color:#889;margin-top:14px}
 </style></head><body><div class="card">
-<h1>STM32N647 OTA · 多槽位固件</h1>
-<div class="drop" id="drop"><b>把 appli 固件拖到此处 (支持 .bin / .hex)</b><span>或点这里选择文件</span></div>
-<input type="file" id="file" accept=".bin,.hex,application/octet-stream" hidden>
+<h1>STM32N647 OTA · 固件升级与回滚</h1>
+<div class="drop" id="drop"><b>选择 SDK 升级包 (.ota) 或应用 (.bin / .hex)</b><span>.ota 可直接发送，无需转换或改后缀</span></div>
+<input type="file" id="file" accept=".bin,.hex,.ota,application/octet-stream" hidden>
 <div class="fname" id="fname"></div>
 <label>描述（切换界面会显示）</label>
 <input type="text" id="desc" placeholder="例如：Camera demo v2" maxlength="200">
-<div class="row"><button id="send" disabled>发送</button><span class="pct" id="pct"></span></div>
+<div class="row"><button id="send" disabled>发送新固件</button><button id="rollback">回滚上一版</button><span class="pct" id="pct"></span></div>
 <div class="bar"><i id="bar"></i></div>
 <div class="log" id="log"></div>
-<div class="hint">后端监听 8080 等板子(TCP 客户端 192.168.2.11)连接；板子 LCD 会显示接收进度，收完自动存入空闲槽位。</div>
+<div class="hint">电脑网卡设为 192.168.2.10。先点发送，再复位板子。SDK 的 .ota 包包含应用、对应模型和启动配置，需先安装配套的兼容版 FSBL 与 Agent。进度表示电脑发送量，写入成功以“板子已确认”为准。</div>
 </div>
 <script>
 let fileBuf=null, fileName="";
@@ -220,8 +183,19 @@ $('send').onclick=async()=>{
   if(!desc){alert('请填写描述');return;}
   $('send').disabled=true;
   const b64=await toB64(new Blob([fileBuf]));
-  await fetch('/api/send',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({file:fileName,desc:desc,data:b64})});
+  try {
+    const result=await (await fetch('/api/send',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({file:fileName,desc:desc,data:b64})})).json();
+    if(!result.ok){alert(result.err);$('send').disabled=false;}
+  } catch(e) { alert('发送请求失败：'+e.message);$('send').disabled=false; }
+};
+$('rollback').onclick=async()=>{
+  $('rollback').disabled=true;
+  try {
+    const result=await (await fetch('/api/send',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({action:'rollback'})})).json();
+    if(!result.ok){alert(result.err);$('rollback').disabled=false;}
+  } catch(e) { alert('回滚请求失败：'+e.message);$('rollback').disabled=false; }
 };
 let seen=0;
 setInterval(async()=>{
@@ -229,9 +203,10 @@ setInterval(async()=>{
   try{s=await (await fetch('/api/state')).json();}catch(e){return;}
   const p=s.total?s.sent/s.total:0;
   $('bar').style.width=(p*100).toFixed(1)+'%';
-  const ph={idle:'就绪',listen:'等待板子连接…',sending:'发送中',done:'已完成'}[(s.phase)]||s.phase;
+  const ph={idle:'就绪',listen:'等待板子连接…',sending:'发送中',verifying:'等待板子写入确认…',done:'板子已确认',error:'升级失败'}[(s.phase)]||s.phase;
   $('pct').textContent=`${ph}  ${s.sent? (s.sent/1024).toFixed(0)+'/':''}${s.total? (s.total/1024).toFixed(0)+' KB':''}`;
-  if(s.phase==='done')$('send').disabled=false;
+  if(['idle','done','error'].includes(s.phase)&&fileBuf)$('send').disabled=false;
+  $('rollback').disabled=['listen','sending','verifying'].includes(s.phase);
   if(s.log.length>seen){$('log').textContent=s.log.join('\n');$('log').scrollTop=$('log').scrollHeight;seen=s.log.length;}
 },300);
 </script></body></html>"""

@@ -523,10 +523,10 @@ uint8_t tp_init(void)
 
     if (rgblcddev.id == 0X5510 || rgblcddev.id == 0X9806 || rgblcddev.id == 0X4342 || rgblcddev.id == 0X4384 || rgblcddev.id == 0X1018)  /* 电容触摸屏,4.3寸/10.1寸屏 */
     {
-        gt9xxx_init();
+        uint8_t status = gt9xxx_init();
         tp_dev.scan = gt9xxx_scan;      /* 扫描函数指向GT9147触摸屏扫描 */
         tp_dev.touchtype |= 0X80;       /* 电容屏 */
-        return 0;
+        return status ? 2u : 0u;
     }
     else if (rgblcddev.id == 0X1963 || rgblcddev.id == 0X7084 || rgblcddev.id == 0X7016)     /* SSD1963 7寸屏或者 7寸800*480/1024*600 RGB屏 */
     {
@@ -536,7 +536,12 @@ uint8_t tp_init(void)
         }
         else                            /* 触摸IC是GT系列的就执行gt9xxx_init函数以及使用gt9xxx_scan扫描函数 */
         {
-            gt9xxx_init();
+            if (gt9xxx_init() != 0u)
+            {
+                tp_dev.scan = gt9xxx_scan;
+                tp_dev.touchtype |= 0X80;
+                return 2u;
+            }
             tp_dev.scan = gt9xxx_scan;  /* 扫描函数指向GT9147触摸屏扫描 */
         }
         tp_dev.touchtype |= 0X80;   /* 电容屏 */

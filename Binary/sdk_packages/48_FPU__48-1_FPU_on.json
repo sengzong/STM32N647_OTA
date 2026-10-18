@@ -1,0 +1,20 @@
+{
+  "project": "48_FPU__48-1_FPU_on",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 49888,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\48_FPU__48-1_FPU_on.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 49888
+    }
+  ],
+  "sha256": "bdd65b7bcbb762eff71ef5cac1d81b70a77181e287e42a99ce52d7da9df04ba3",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\48_FPU\\48-1_FPU_on\\Binary\\appli.hex",
+      "sha256": "3e86ade05de817f2b80a1494cf957e528ace5693c06308ea749549327ec8d6ed"
+    }
+  ]
+}

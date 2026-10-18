@@ -1,0 +1,20 @@
+{
+  "project": "33_Wireless",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 53568,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\33_Wireless.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 53568
+    }
+  ],
+  "sha256": "c25a36e01f78bee6714205dc231d438c8849eaa3d09d888cf50fdc6088686e29",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\33_Wireless\\Binary\\appli.hex",
+      "sha256": "516648c160d42d98c0cd36dc5fd3068a9061dbc912febd133de4e6fb957eb826"
+    }
+  ]
+}

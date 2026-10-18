@@ -1,0 +1,20 @@
+{
+  "project": "13_MPU",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 30336,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\13_MPU.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 30336
+    }
+  ],
+  "sha256": "239aaa82104e5c867108705a5ca87a23f7a94c26a9e6ca39e82474344fa666b8",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\13_MPU\\Binary\\appli.hex",
+      "sha256": "2e096b1860220a9b5459ee8e7247b0d75bf3c4ae0f6fb948d2cff24674430541"
+    }
+  ]
+}

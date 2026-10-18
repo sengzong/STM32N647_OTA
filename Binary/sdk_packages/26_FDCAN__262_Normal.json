@@ -1,0 +1,20 @@
+{
+  "project": "26_FDCAN__262_Normal",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 37728,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\26_FDCAN__262_Normal.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 37728
+    }
+  ],
+  "sha256": "80891b372e34deac68ac11ba6f452691526693c944dba7ad2d2a5b45f800b2d0",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\26_FDCAN\\262_Normal\\Binary\\appli.hex",
+      "sha256": "7a7d5293c1885ace4ac89d1c8ccdaa1120074e914e0b41bd37b3466e50362038"
+    }
+  ]
+}

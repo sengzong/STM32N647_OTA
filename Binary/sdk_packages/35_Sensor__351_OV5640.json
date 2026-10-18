@@ -1,0 +1,20 @@
+{
+  "project": "35_Sensor__351_OV5640",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 45056,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\35_Sensor__351_OV5640.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 45056
+    }
+  ],
+  "sha256": "44871f283f147a451113bcc1e58a3a17d8ec6d58b98b9baa4814bd717a4dc861",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\35_Sensor\\351_OV5640\\Binary\\appli.hex",
+      "sha256": "4a9a108528c5f2c420e1d9a475d365206c88bba93bf14bdca8dc6bd9225d5325"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "project": "47_Video_Player",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 274144,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\47_Video_Player.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 274144
+    }
+  ],
+  "sha256": "cf7da5d9cf1ba03dd3fdc6a03945f5bb318d034c5f883e7256d9061e2dcc6a2e",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\47_Video_Player\\Binary\\appli.hex",
+      "sha256": "f8988a5be08c590b72760fdbb40e4194de57a5fce72a21e5dbccd70905562c9d"
+    }
+  ]
+}

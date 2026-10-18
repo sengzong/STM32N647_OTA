@@ -1,0 +1,20 @@
+{
+  "project": "30_DHT11",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 35488,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\30_DHT11.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 35488
+    }
+  ],
+  "sha256": "d9fbc1e067225d2327a21df0d7118939ffaf6e781fa18d7f0092fdb564c84b2a",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\30_DHT11\\Binary\\appli.hex",
+      "sha256": "5f1107bc0bfe07a12289e41dd6b5966263e05655ad1697b4b2f75a229521d525"
+    }
+  ]
+}

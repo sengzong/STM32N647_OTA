@@ -1,0 +1,20 @@
+{
+  "project": "26_FDCAN__261_Internal_LoopBack",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 37760,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\26_FDCAN__261_Internal_LoopBack.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 37760
+    }
+  ],
+  "sha256": "ae1a942f2c581e10fce84da4674a5204cc0ed40de0c3d1801f5de1a475ee1f55",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\26_FDCAN\\261_Internal_LoopBack\\Binary\\appli.hex",
+      "sha256": "4c97f6e031f309358f8e7bf9a9ea6280e032ef1fcaa14768a2f34e324fad0ef5"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "project": "09_General_Purpose_Timer__093_Capture",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 31520,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\09_General_Purpose_Timer__093_Capture.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 31520
+    }
+  ],
+  "sha256": "170cd4eda0fd97199e30db0f55efa04fe94805b6bba8d28b848d57764b7d2449",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\09_General_Purpose_Timer\\093_Capture\\Binary\\appli.hex",
+      "sha256": "eb55dde322bcdf21349cec634d96f7fe3bb97ae860740cbe53aec6d74f8e7e4c"
+    }
+  ]
+}

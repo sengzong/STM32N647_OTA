@@ -1,0 +1,20 @@
+{
+  "project": "10_Advanced_Control_Timer__102_Compare",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 7264,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\10_Advanced_Control_Timer__102_Compare.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 7264
+    }
+  ],
+  "sha256": "f9b0ea63062a084d4252ea36883017641940aabe06293d10ac12d27bd0fd4eba",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\10_Advanced_Control_Timer\\102_Compare\\Binary\\appli.hex",
+      "sha256": "7e4191a92d77a6480d0b18d99f203f5281235250e521b09c82b850533d495638"
+    }
+  ]
+}

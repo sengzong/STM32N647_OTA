@@ -1,0 +1,21 @@
+#ifndef APP_IMX335_MODE_H
+#define APP_IMX335_MODE_H
+
+#define APP_IMX335_R1296_972 7u
+#ifndef APP_CAPTURE_BIN60
+#define APP_CAPTURE_BIN60 0
+#endif
+#if APP_CAPTURE_BIN60
+#define APP_SENSOR_WIDTH 1296u
+#define APP_SENSOR_HEIGHT 972u
+#define APP_SENSOR_FPS 60u
+#else
+#define APP_SENSOR_WIDTH 2592u
+#define APP_SENSOR_HEIGHT 1944u
+#define APP_SENSOR_FPS 30u
+#endif
+#define APP_SENSOR_EXPOSURE_MAX_US 16600
+
+int app_imx335_is_binned(void);
+
+#endif

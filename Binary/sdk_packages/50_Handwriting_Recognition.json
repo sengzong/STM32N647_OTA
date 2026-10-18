@@ -1,0 +1,20 @@
+{
+  "project": "50_Handwriting_Recognition",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 188416,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\50_Handwriting_Recognition.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 188416
+    }
+  ],
+  "sha256": "29d8782cf2904cd143a08a1f70600f0069f83829a896bab87d0c03264ff628f7",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\50_Handwriting_Recognition\\Binary\\appli.hex",
+      "sha256": "fa444176d36c8753cd3b11b3ae0346072d05bf98a644a34d8802a510a34527c1"
+    }
+  ]
+}

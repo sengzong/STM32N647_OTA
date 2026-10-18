@@ -1,0 +1,20 @@
+{
+  "project": "34_WS2812B__341_WS2812B_DMA",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 20896,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\34_WS2812B__341_WS2812B_DMA.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 20896
+    }
+  ],
+  "sha256": "5cfd28ced475a396f5594d810cfe503ac5d3cf95ed0a70805a847c89a8adf62c",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\34_WS2812B\\341_WS2812B_DMA\\Binary\\appli.hex",
+      "sha256": "8a9f9518f8b2b7517ed13a378a70fcb81e5f590c122e28f6c0048251de79d610"
+    }
+  ]
+}

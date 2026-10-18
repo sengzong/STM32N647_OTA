@@ -1,0 +1,20 @@
+{
+  "project": "27_Touch",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 45824,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\27_Touch.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 45824
+    }
+  ],
+  "sha256": "18cb28911ce2b50efe36ad9f75a1655fd2868937d5f29e9d011ee1310b3b7517",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\27_Touch\\Binary\\appli.hex",
+      "sha256": "e101687be21e1cbdab3aa892e12fd1cc969e7f2c33412ce67e5805d9c2c26fac"
+    }
+  ]
+}

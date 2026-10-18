@@ -2,6 +2,7 @@
 #define __APP_OTA_FLASH_H
 
 #include <stdint.h>
+#include "../../../Secure_nsclib/ota_layout.h"
 
 /* ========================= OTA 写 NOR 代理(OPI 直写 XSPI2) =========================
  * 硬约束: XSPI2 切 IO 模式的瞬间, 0x70000000 XIP 取指断开 -> 代理必须整体在内部 SRAM 执行。
@@ -31,16 +32,21 @@ typedef struct {
 #define OTA_F_VERIFY  0x00000008u  /* 编程后 OPI 读回校验 */
 #define OTA_F_RESET   0x00000010u  /* 完成后 CPU 复位(生产 OTA); 未置则恢复内存映射后返回 */
 #define OTA_F_ID      0x00000020u  /* 读 JEDEC ID(0x9F, 6 字节), 用于验证 OPI 读路径真伪 */
+#define OTA_F_WRITE_ONLY 0x00000040u /* Program an already erased range, no erase. */
 
 /* ---- 多槽位固件: 引导区(0x100000)常驻当前固件; 新固件先入槽位, 切换=拷槽位覆盖引导区 ----
  * 槽位布局: [64B 描述头 | 固件镜像], 等宽间距排在 NOR 高区(避开 FSBL/引导区) */
-#define OTA_SLOT_BASE    0x400000u
-#define OTA_SLOT_SPACING 0x400000u
-#define OTA_SLOT_COUNT   3u
+#define OTA_SLOT_BASE    OTA_LAYOUT_SLOT_BASE
+#define OTA_SLOT_SPACING OTA_LAYOUT_SLOT_SIZE
+#define OTA_SLOT_COUNT   1u /* One staging image; the rollback area is separate. */
 #define OTA_SLOT_HEADER  64u
 #define OTA_SLOT_DESC_MAX 32u
 
 #define OTA_SLOT_MAGIC   0x31544C53u   /* "SLT1" */
+#define OTA_BACKUP_OFFSET OTA_LAYOUT_BACKUP_HEADER
+#define OTA_BACKUP_DATA   OTA_LAYOUT_BACKUP_DATA
+#define OTA_BACKUP_MAGIC  0x314B4247u
+#define OTA_BACKUP_MAX_LEN OTA_LAYOUT_BACKUP_MAX
 
 /* 槽位头(64B, 放槽位首地址): magic/img_len/desc_len/crc32(对镜像)/desc[..]/rsv */
 typedef struct {
@@ -93,6 +99,69 @@ extern OtaSlotView g_slots[OTA_SLOT_COUNT];
 uint32_t ota_crc32(const uint8_t *p, uint32_t len);
 void     ota_slot_refresh(void);            /* 经 XIP 重读各槽位头 -> g_slots */
 int      ota_store_to_next_slot(const uint8_t *img, uint32_t img_len, const char *desc, uint32_t desc_len); /* 存下一空槽, 返回槽号/-1 */
-int      ota_switch_slot(uint32_t slot);    /* 拷槽镜像覆盖引导区 + 复位(不返回成功, 复位即切) */
+int      ota_switch_slot(uint32_t slot);    /* Queue PERSIST and reset; FSBL owns copy and backup. */
+#if defined(LED2_OTA_AGENT)
+void     ota_gateway_init(void);
+void     ota_gateway_poll(void);
+#endif
+
+/* ===================== Boot record: app <-> FSBL handshake =====================
+ * The application no longer writes the boot area itself. It only leaves a
+ * 32-byte record in its own NOR sector and resets; the FSBL performs the
+ * slot -> boot-area copy, verifies it, and reports back through the same record.
+ *
+ *   app  writes REQ_TRIAL / REQ_PERSIST  -> resets
+ *   fsbl copies + verifies               -> writes TRIAL_BOOTED (or CONFIRMED)
+ *   app  runs 3 s with a healthy OTA path-> writes CONFIRMED    (accept)
+ *   app  never confirms                  -> fsbl rolls back to the golden backup
+ *
+ * Magic, state values, 32-byte layout and CRC range MUST stay byte-identical to
+ * the bootloader-side copy in FSBL/Core/Inc/bootmgr.h.
+ *
+ *   offset     size   content
+ *   0x0FC000   4KB    BOOTREC sector - one 32-byte record, whole sector erased
+ *                     per write, placed just below the boot area (0x100000)
+ */
+#define OTA_BOOTREC_OFFSET    0x0FC000u
+#define OTA_BOOTREC_SIZE      32u
+#define OTA_BOOTREC_MAGIC     0x314D424Fu   /* "OBM1" */
+
+#define OTA_BOOT_ST_IDLE         0u  /* nothing pending                           */
+#define OTA_BOOT_ST_REQ_TRIAL    1u  /* app: copy this slot, boot as a trial      */
+#define OTA_BOOT_ST_REQ_PERSIST  2u  /* app: copy this slot, accept right away    */
+#define OTA_BOOT_ST_TRIAL_BOOTED 3u  /* fsbl: trial was jumped to, awaiting ack   */
+#define OTA_BOOT_ST_CONFIRMED    4u  /* app: trial accepted, keep it              */
+#define OTA_BOOT_ST_ROLLED_BACK  5u  /* fsbl: restored the golden backup          */
+#define OTA_BOOT_ST_REQ_AGENT    6u  /* app: boot the resident OTA agent          */
+#define OTA_BOOT_ST_REQ_ROLLBACK 7u  /* receiver: restore the previous application */
+
+/* 32 bytes, naturally aligned. crc32 sits at offset 28 and covers bytes [0,28). */
+typedef struct {
+    uint32_t magic;     /*  0: OTA_BOOTREC_MAGIC                             */
+    uint32_t state;     /*  4: OTA_BOOT_ST_*                                 */
+    uint32_t slot;      /*  8: source slot index                             */
+    uint32_t seq;       /* 12: monotonic switch counter                      */
+    uint32_t img_len;   /* 16: image length in bytes                         */
+    uint32_t rsv[2];    /* 20: reserved for future use (write zero)          */
+    uint32_t crc32;     /* 28: CRC32 over bytes [0, 28)                      */
+} OtaBootRec;
+
+/* How long the freshly copied firmware must survive before it is allowed to
+ * confirm itself (see ota_confirm_poll). */
+#ifndef OTA_CONFIRM_DELAY_MS
+#define OTA_CONFIRM_DELAY_MS 3000u
+#endif
+
+/* ---- implemented in app_netxduo.c ---- */
+int      ota_bootrec_read(OtaBootRec *rec);   /* 0 = valid record (magic + CRC ok)          */
+int      ota_bootrec_write(uint32_t state, uint32_t slot, uint32_t seq, uint32_t img_len);
+uint32_t ota_bootrec_next_seq(void);          /* current seq + 1 (1 when there is none)     */
+int      ota_confirm_boot(void);              /* accept the running trial firmware          */
+int      ota_request_agent(void);             /* ask the FSBL for the OTA agent, then reset */
+void     ota_confirm_poll(void);              /* call periodically: 3 s + self-test -> confirm once */
+
+/* Set once app_netxduo_init() has built the NetXDuo/ETH stack. The cable state is
+ * deliberately NOT part of this: an unplugged cable must never cause a rollback. */
+extern volatile uint8_t g_net_stack_ready;
 
 #endif /* __APP_OTA_FLASH_H */

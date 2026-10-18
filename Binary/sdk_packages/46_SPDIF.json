@@ -1,0 +1,20 @@
+{
+  "project": "46_SPDIF",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 70976,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\46_SPDIF.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 70976
+    }
+  ],
+  "sha256": "33d57302c0c571c667e5811aadd3ace3f5f227d5721fc45f16bcb051d993f2e2",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\46_SPDIF\\Binary\\appli.hex",
+      "sha256": "d0dcb05d31e6dd17e4b8378c560204c451e6d259a0509574fb8b0a6e5669bfc5"
+    }
+  ]
+}

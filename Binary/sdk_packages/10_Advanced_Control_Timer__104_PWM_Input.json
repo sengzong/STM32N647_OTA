@@ -1,0 +1,20 @@
+{
+  "project": "10_Advanced_Control_Timer__104_PWM_Input",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 34176,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\10_Advanced_Control_Timer__104_PWM_Input.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 34176
+    }
+  ],
+  "sha256": "cb8138f3f4da769e00666b5c44d72434792e5964255351016a1a28ebd5ebce71",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\10_Advanced_Control_Timer\\104_PWM_Input\\Binary\\appli.hex",
+      "sha256": "50b0d95c9cc7a413ebaaf21abee5c800f140955409d70a201b2e4e7683c5c238"
+    }
+  ]
+}

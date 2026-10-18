@@ -1,0 +1,20 @@
+{
+  "project": "35_Sensor__352_IMX335",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 89216,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\35_Sensor__352_IMX335.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 89216
+    }
+  ],
+  "sha256": "d5c2878ac8494f5fdad746b143e521de49207ba5418271093f58e3bcb44217f3",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\35_Sensor\\352_IMX335\\Binary\\appli.hex",
+      "sha256": "2ba56e9cb71d6d9734a69f203cc0c67aae25dc98ac2cf9fbe41cf2f7b9fb14ae"
+    }
+  ]
+}

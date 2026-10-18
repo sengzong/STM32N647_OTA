@@ -1,0 +1,20 @@
+{
+  "project": "21_DTS",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 35552,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\21_DTS.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 35552
+    }
+  ],
+  "sha256": "c9260fe8e0102dc70a25669887f215708fd6d78bf2a746d43946139e4d6848a6",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\21_DTS\\Binary\\appli.hex",
+      "sha256": "3e9c7fbfeca467f9bcc0d5775a6d07f30fb33dce4e4420386eb00eb5f8aca75e"
+    }
+  ]
+}

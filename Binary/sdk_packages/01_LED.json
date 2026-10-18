@@ -1,0 +1,20 @@
+{
+  "project": "01_LED",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 3680,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\01_LED.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 3680
+    }
+  ],
+  "sha256": "8b451dcfc3f21a52a2b75e827a15b5b157a272eaca331bcc9892c6ab5a62601b",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\01_LED\\Binary\\appli.hex",
+      "sha256": "1e39c2e0f57a53a236d5cb11c94b280eebbb9b35d2b9b79d789bbba1de1ac9bc"
+    }
+  ]
+}

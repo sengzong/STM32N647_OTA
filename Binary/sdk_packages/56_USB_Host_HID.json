@@ -1,0 +1,20 @@
+{
+  "project": "56_USB_Host_HID",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 59360,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\56_USB_Host_HID.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 59360
+    }
+  ],
+  "sha256": "de70e50c2bf61ef2a952abf39df6d79665e5f6b36e83424a427900b76d1fc0aa",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\56_USB_Host_HID\\Binary\\appli.hex",
+      "sha256": "d6bbbe46cbb1936b662e991088c50ce043cdc9768583bed4ee7ed44bc42d7045"
+    }
+  ]
+}

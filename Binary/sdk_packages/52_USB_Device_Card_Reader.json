@@ -1,0 +1,20 @@
+{
+  "project": "52_USB_Device_Card_Reader",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 68544,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\52_USB_Device_Card_Reader.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 68544
+    }
+  ],
+  "sha256": "594dcb535740261c96afbf542b51648dbeb8ead8477da3f9cd7c98654d942970",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\52_USB_Device_Card_Reader\\Binary\\appli.hex",
+      "sha256": "9b85eb9fd5d3444eb9d536a6a4f414698dd8db2b9647e4acabfcc250fa2e8736"
+    }
+  ]
+}

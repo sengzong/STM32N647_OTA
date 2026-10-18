@@ -1,0 +1,20 @@
+{
+  "project": "04_Button_EXTI",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 3744,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\04_Button_EXTI.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 3744
+    }
+  ],
+  "sha256": "eb811ca4192e001ce9cca14013b075ee669431771937bc2c44c92dd33477c158",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\04_Button_EXTI\\Binary\\appli.hex",
+      "sha256": "d807e107e2bf72a84ce48e575a7321725dfbde6ec74dbb07a2ac51792fd11cde"
+    }
+  ]
+}

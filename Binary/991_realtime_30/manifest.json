@@ -1,0 +1,113 @@
+{
+  "name": "991 RT30 R2",
+  "profile": 2,
+  "clock_mhz": 800,
+  "input_buffers": 3,
+  "extra_psram_bytes": 0,
+  "input_address": "0x34008840",
+  "input_bytes": 921600,
+  "internal_bss_end": "0x340fef58",
+  "speed_optimized": true,
+  "capture_target_fps": 30,
+  "capture_size": [
+    2592,
+    1944
+  ],
+  "latest_frame": true,
+  "persistent_runtime": true,
+  "camera_pipeline": "original_sdk",
+  "camera_board_status": "new_application_needs_board_check",
+  "source_overrides": [
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Appli\\Core\\Src\\app.c",
+      "sha256": "92a6e3369f1dd6bcf0dc9a3d618a3c844cf95175e010d61c1028f736204a7b2a"
+    },
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Appli\\Core\\Src\\app_lcd.c",
+      "sha256": "2fdb050f73277088a5fa2e49800d9896842b46a4b9c39762fdb0a6af81b577f4"
+    }
+  ],
+  "o3_objects": [
+    "Application/User/Core/app.o",
+    "Application/User/Core/app_postprocess.o",
+    "Middlewares/AI/Npu/ll_aton/ll_aton_lib.o",
+    "Middlewares/AI/Npu/ll_aton/ll_aton_lib_sw_operators.o",
+    "Model/network.o"
+  ],
+  "extram_bytes": 3840000,
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 844
+    },
+    {
+      "address": "0x70100750",
+      "bytes": 123124
+    },
+    {
+      "address": "0x7011e848",
+      "bytes": 360640
+    },
+    {
+      "address": "0x70176920",
+      "bytes": 32
+    },
+    {
+      "address": "0x70200000",
+      "bytes": 3018081
+    }
+  ],
+  "rebuilt_source_files": 306,
+  "model_sha256": "0f08471b344fe7b68dece1bb8cfd1e0614fe4d92349710e63727fa38a9c7e246",
+  "overlay": [
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Appli\\Core\\Inc\\app_capture.h",
+      "sha256": "0513bed577c8be01c1152e63e7af352f79454347ebfb57a7ed66c20fc551cfa1"
+    },
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Appli\\Core\\Inc\\app_config.h",
+      "sha256": "291e57e0b4eac154be77361aa6a0fbc4c0476161629e7d615d0f7712f9cd1f2c"
+    },
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Appli\\Core\\Inc\\app_imx335_mode.h",
+      "sha256": "65e5bbc3560b6042e9127e19e9b8ddecfd1da3ca8f249f0281fb61ec7af282c9"
+    },
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Appli\\Core\\Inc\\app_input.h",
+      "sha256": "646e85b3bca90b0613530eaec3d01e3b8c510e0768ee9ba883e65abc75809cf3"
+    },
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Appli\\Core\\Inc\\app_nn.h",
+      "sha256": "2ea761f917d64649ef48c4dd1a62720dc64865e9de3bedac3570b4f7e0e7a9bd"
+    },
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Appli\\Core\\Src\\app.c",
+      "sha256": "92a6e3369f1dd6bcf0dc9a3d618a3c844cf95175e010d61c1028f736204a7b2a"
+    },
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Appli\\Core\\Src\\app_camera.c",
+      "sha256": "ff9a87adbc2ad43d70bcb0cdb95196e4d7076da84ccd6e11c57bf94699c85113"
+    },
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Appli\\Core\\Src\\app_lcd.c",
+      "sha256": "2fdb050f73277088a5fa2e49800d9896842b46a4b9c39762fdb0a6af81b577f4"
+    },
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Middlewares\\STM32_MW_CAMERA\\sensors\\cmw_imx335.c",
+      "sha256": "8d8e5f8bfe32eb66c9c8098d38018eed56f1a4f30485e83c323bae80c99d5316"
+    },
+    {
+      "path": "SDK_Adapted\\991_Realtime\\Middlewares\\STM32_MW_CAMERA\\sensors\\imx335\\imx335.c",
+      "sha256": "b6685c73201e3c4b74bb728a718761a9c4fece247afe67c292e8aa14c9fa4fc2"
+    }
+  ],
+  "files": {
+    "991_realtime_30.hex": "2fc39900e7e4a3411209d4f5dcd43ca7a8c3ec602ed9cd529b012cf19ad42202",
+    "991_realtime_30.ota": "7a5098bfa1cfb8e9f1d83026c668ca4654433780aead3669511a523f4a8e24a8",
+    "appli.bin": "4cd0a3722a24c21fbba29cfcd658ab9bbb73fce9000efe399211a96b8ef27aa3",
+    "appli.hex": "2fc39900e7e4a3411209d4f5dcd43ca7a8c3ec602ed9cd529b012cf19ad42202",
+    "application_and_network.hex": "200ca0e42407ba672f08aa698b553d29df725f0ad642c94ba428966a161bf238",
+    "network-data.hex": "0f08471b344fe7b68dece1bb8cfd1e0614fe4d92349710e63727fa38a9c7e246"
+  },
+  "validation": "Target build, buffer placement, model pairing and CRC verified; FPS improvement requires board testing."
+}

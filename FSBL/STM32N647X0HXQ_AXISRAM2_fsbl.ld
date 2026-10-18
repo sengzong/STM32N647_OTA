@@ -199,5 +199,8 @@ SECTIONS
     libgcc.a ( * )
   }
 
+  ASSERT(LOADADDR(.data) + SIZEOF(.data) <= 0x341B0000,
+         "FSBL image overlaps retained OTA handoff")
+
   .ARM.attributes 0 : { *(.ARM.attributes) }
 }

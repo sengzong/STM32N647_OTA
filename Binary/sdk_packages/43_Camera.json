@@ -1,0 +1,20 @@
+{
+  "project": "43_Camera",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 191040,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\43_Camera.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 191040
+    }
+  ],
+  "sha256": "9d272023da81577bdc13a6706a815640baea8295f8db312784032ad0ad73456c",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\43_Camera\\Binary\\appli.hex",
+      "sha256": "2a17482ea6c5b29fa98fe457f487c73a4ac31e00272241f3255d19bab0b0480d"
+    }
+  ]
+}

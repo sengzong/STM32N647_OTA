@@ -19,6 +19,7 @@
  */
 
 #include "string.h"
+#include "stdio.h"
 #include "../RGBLCD/rgblcd.h"
 #include "touch.h"
 #include "ctiic.h"
@@ -130,6 +131,8 @@ uint8_t gt9xxx_init(void)
     HAL_Delay(100);
     gt9xxx_rd_reg(GT9XXX_PID_REG, temp, 4); /* 读取触摸IC的ID */
     temp[4] = 0;
+    printf("TOUCH: GT product bytes=%02X %02X %02X %02X\r\n",
+           temp[0], temp[1], temp[2], temp[3]);
 
     /* 判断一下是否是特定的触摸屏 */
     if ( strcmp((char *)temp, "911") && strcmp((char *)temp, "9147") && strcmp((char *)temp, "1158") && strcmp((char *)temp, "9271"))

@@ -1,0 +1,22 @@
+{
+  "appli.hex": {
+    "base": "0x70100400",
+    "bytes": 114304,
+    "sha256": "f74d53979ddf4677af6b7100231e4107175592d24b0b2f18a3a84dccad6ff367"
+  },
+  "agent.hex": {
+    "base": "0x71f00400",
+    "bytes": 80512,
+    "sha256": "dcb105cff0d1f6b4b063fac48cd22652334bfebb0d1d93108c87ad8000a4296e"
+  },
+  "fsbl_universal.hex": {
+    "base": "0x70000000",
+    "bytes": 36960,
+    "sha256": "36217a196ef6e256968fcf3628ba02ef3bca2423c3f03759f5fd1fa877f97369"
+  },
+  "initial_install.hex": {
+    "base": "multiple",
+    "bytes": 245088,
+    "sha256": "32dc2440dc6ffdf6192ee1c2442aeaa4b2a5e29bae05a90ad8ae65538de609f3"
+  }
+}

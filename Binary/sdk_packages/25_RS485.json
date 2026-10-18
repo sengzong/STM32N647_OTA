@@ -1,0 +1,20 @@
+{
+  "project": "25_RS485",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 48736,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\25_RS485.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 48736
+    }
+  ],
+  "sha256": "a5357f5ab3c63ce775452196b0977c7fe98bf3f48bc2dabbbe703fcd45a6b02b",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\25_RS485\\Binary\\appli.hex",
+      "sha256": "aeee20e47ba34b5a4f228674de10c88fedd341b030a0f266fb291efdaa7868cb"
+    }
+  ]
+}

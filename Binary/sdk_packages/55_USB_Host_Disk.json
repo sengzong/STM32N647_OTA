@@ -1,0 +1,20 @@
+{
+  "project": "55_USB_Host_Disk",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 107200,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\55_USB_Host_Disk.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 107200
+    }
+  ],
+  "sha256": "f036c0d418f545b84f5b55fb5515079f97a0d8d4268c568a45816c2176789f45",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\55_USB_Host_Disk\\Binary\\appli.hex",
+      "sha256": "fe474867a80dce384a8f890fa3f4c6f16d9707bf237f0ab43303a0feefb5e584"
+    }
+  ]
+}

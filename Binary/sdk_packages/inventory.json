@@ -1,0 +1,1591 @@
+{
+  "sdk": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package",
+  "prepared": [
+    {
+      "project": "01_LED",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 3680,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\01_LED.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 3680
+        }
+      ],
+      "sha256": "8b451dcfc3f21a52a2b75e827a15b5b157a272eaca331bcc9892c6ab5a62601b",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\01_LED\\Binary\\appli.hex",
+          "sha256": "1e39c2e0f57a53a236d5cb11c94b280eebbb9b35d2b9b79d789bbba1de1ac9bc"
+        }
+      ]
+    },
+    {
+      "project": "02_Buzzer",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 3744,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\02_Buzzer.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 3744
+        }
+      ],
+      "sha256": "a70c1a69bad4e067474a2ae19742856a32c29d43db0a6fc1a2df38e7221a6149",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\02_Buzzer\\Binary\\appli.hex",
+          "sha256": "ce2fc4c1f080c2247f877ed8bc1a91576926c290bad18294686c18bcc3bea385"
+        }
+      ]
+    },
+    {
+      "project": "03_Button",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 4128,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\03_Button.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 4128
+        }
+      ],
+      "sha256": "0b9dc669d7f2e7e086e16bef6d18fc374180afc05cb2d3787eeb90c1c4159a73",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\03_Button\\Binary\\appli.hex",
+          "sha256": "3f825918a5ee7f732cc28d5c886ac77d0ec70dc2d40925a5fcb4a862306a9a05"
+        }
+      ]
+    },
+    {
+      "project": "04_Button_EXTI",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 3744,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\04_Button_EXTI.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 3744
+        }
+      ],
+      "sha256": "eb811ca4192e001ce9cca14013b075ee669431771937bc2c44c92dd33477c158",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\04_Button_EXTI\\Binary\\appli.hex",
+          "sha256": "d807e107e2bf72a84ce48e575a7321725dfbde6ec74dbb07a2ac51792fd11cde"
+        }
+      ]
+    },
+    {
+      "project": "05_Serial",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 27040,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\05_Serial.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 27040
+        }
+      ],
+      "sha256": "58a80a6818b688ba1911a3acf80cec88c6804ea2bb784ed2e80fdf25333317d8",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\05_Serial\\Binary\\appli.hex",
+          "sha256": "6770835771d00b38b5a1a870df1c76e66c8d07e699adca0a5621e6eeb641f362"
+        }
+      ]
+    },
+    {
+      "project": "06_IWDG",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 4288,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\06_IWDG.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 4288
+        }
+      ],
+      "sha256": "0b5ba586a698c5ef23c79c3ae0eab6d02e70e86c94082e260f1640656817b4e4",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\06_IWDG\\Binary\\appli.hex",
+          "sha256": "93948de5904226c765bdbe278538b11af6e38a03e199617e1e52a4b3e63dccd5"
+        }
+      ]
+    },
+    {
+      "project": "07_WWDG",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 3872,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\07_WWDG.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 3872
+        }
+      ],
+      "sha256": "93fb6ab013f5d78e298e211b0a7290e8d06a5bea0d33df53b5f6a91044f413f5",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\07_WWDG\\Binary\\appli.hex",
+          "sha256": "db93e5fa8d5d9c547b955b835ec32b5a6d1490e5219dc3958e8d88240e88bd10"
+        }
+      ]
+    },
+    {
+      "project": "08_Basic_Timer",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 5280,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\08_Basic_Timer.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 5280
+        }
+      ],
+      "sha256": "43dd8881b86b0f21514aa1d4a1595fe80d89734539de0942a46c0561fc52192b",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\08_Basic_Timer\\Binary\\appli.hex",
+          "sha256": "2699eb7a7223f26b7b9041c6e5888eb01e1125f066a1dacce2ce229967bb9fb3"
+        }
+      ]
+    },
+    {
+      "project": "09_General_Purpose_Timer__091_Interrupt",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 5728,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\09_General_Purpose_Timer__091_Interrupt.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 5728
+        }
+      ],
+      "sha256": "60438f3b10b210ab87095aa74c864036798f198bd8c51ebff39f692967331570",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\09_General_Purpose_Timer\\091_Interrupt\\Binary\\appli.hex",
+          "sha256": "49648ddbb33d51cc4a53e26e140230bd057226f6ba22c13a9343aad2d0c9d0d0"
+        }
+      ]
+    },
+    {
+      "project": "09_General_Purpose_Timer__092_PWM",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 7104,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\09_General_Purpose_Timer__092_PWM.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 7104
+        }
+      ],
+      "sha256": "dd267fca3b9d1fddeacda9ef0355b3ea7c9c047dba908b156986100dd9ebcf94",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\09_General_Purpose_Timer\\092_PWM\\Binary\\appli.hex",
+          "sha256": "dbf39b78673ba5316d15079c4b7b123392e789712142d057bd838775686c9720"
+        }
+      ]
+    },
+    {
+      "project": "09_General_Purpose_Timer__093_Capture",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 31520,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\09_General_Purpose_Timer__093_Capture.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 31520
+        }
+      ],
+      "sha256": "170cd4eda0fd97199e30db0f55efa04fe94805b6bba8d28b848d57764b7d2449",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\09_General_Purpose_Timer\\093_Capture\\Binary\\appli.hex",
+          "sha256": "eb55dde322bcdf21349cec634d96f7fe3bb97ae860740cbe53aec6d74f8e7e4c"
+        }
+      ]
+    },
+    {
+      "project": "09_General_Purpose_Timer__094_Slave",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 30944,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\09_General_Purpose_Timer__094_Slave.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 30944
+        }
+      ],
+      "sha256": "650632324491f0f9e745f7a7988c9bdd27dcd775ec8a04f7d160e3ba667bddbf",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\09_General_Purpose_Timer\\094_Slave\\Binary\\appli.hex",
+          "sha256": "b4f4a0c87a5d996565cae88316e748b55b2e28861eac0aca515e57d10b15edbb"
+        }
+      ]
+    },
+    {
+      "project": "10_Advanced_Control_Timer__101_PWM",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 8352,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\10_Advanced_Control_Timer__101_PWM.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 8352
+        }
+      ],
+      "sha256": "dca6b005aa8b960af03b7926d490abd2ebf24cf698a88ab6a698b5901d65c0d9",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\10_Advanced_Control_Timer\\101_PWM\\Binary\\appli.hex",
+          "sha256": "a4ee0bb5a3836a00f04230ff9444d22f7fb6b1d5f6d1f3827e8aa851e2575548"
+        }
+      ]
+    },
+    {
+      "project": "10_Advanced_Control_Timer__102_Compare",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 7264,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\10_Advanced_Control_Timer__102_Compare.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 7264
+        }
+      ],
+      "sha256": "f9b0ea63062a084d4252ea36883017641940aabe06293d10ac12d27bd0fd4eba",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\10_Advanced_Control_Timer\\102_Compare\\Binary\\appli.hex",
+          "sha256": "7e4191a92d77a6480d0b18d99f203f5281235250e521b09c82b850533d495638"
+        }
+      ]
+    },
+    {
+      "project": "10_Advanced_Control_Timer__103_Asymmetric_PWM",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 8064,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\10_Advanced_Control_Timer__103_Asymmetric_PWM.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 8064
+        }
+      ],
+      "sha256": "ea86a53a4e6262ea30119bf464f4d7df6fff671e351719552b2dca74c5305733",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\10_Advanced_Control_Timer\\103_Asymmetric_PWM\\Binary\\appli.hex",
+          "sha256": "2c8a5b0bae5d1df9c198c13aa386309ef33873f5d4ca617eb5a64068fc48b063"
+        }
+      ]
+    },
+    {
+      "project": "10_Advanced_Control_Timer__104_PWM_Input",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 34176,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\10_Advanced_Control_Timer__104_PWM_Input.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 34176
+        }
+      ],
+      "sha256": "cb8138f3f4da769e00666b5c44d72434792e5964255351016a1a28ebd5ebce71",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\10_Advanced_Control_Timer\\104_PWM_Input\\Binary\\appli.hex",
+          "sha256": "50b0d95c9cc7a413ebaaf21abee5c800f140955409d70a201b2e4e7683c5c238"
+        }
+      ]
+    },
+    {
+      "project": "11_TPAD",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 5920,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\11_TPAD.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 5920
+        }
+      ],
+      "sha256": "370fe172d304684df6fcc31a3b9179a004ba935e34094a62c585fdfd0a1436fb",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\11_TPAD\\Binary\\appli.hex",
+          "sha256": "bb890373cb3fab174cffd386e698fb222f5ae2de20d5b4985c5a525a39e07d46"
+        }
+      ]
+    },
+    {
+      "project": "12_OLED",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 11392,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\12_OLED.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 11392
+        }
+      ],
+      "sha256": "a24dbc4bc87bb6fc3f6b3544a8d05580d015c98c9829f05a47845888ed901989",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\12_OLED\\Binary\\appli.hex",
+          "sha256": "421bd184f440195b22adb474538952c108e207c0d00c9a4d2e620dd7bacbe446"
+        }
+      ]
+    },
+    {
+      "project": "13_MPU",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 30336,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\13_MPU.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 30336
+        }
+      ],
+      "sha256": "239aaa82104e5c867108705a5ca87a23f7a94c26a9e6ca39e82474344fa666b8",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\13_MPU\\Binary\\appli.hex",
+          "sha256": "2e096b1860220a9b5459ee8e7247b0d75bf3c4ae0f6fb948d2cff24674430541"
+        }
+      ]
+    },
+    {
+      "project": "14_TFTLCD",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 44928,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\14_TFTLCD.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 44928
+        }
+      ],
+      "sha256": "13aac18429c1003d123ac24b2a67b6c5e72fb5e0d4228f09e86d7f38141c14d5",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\14_TFTLCD\\Binary\\appli.hex",
+          "sha256": "0e483a6d94e090c7be39ea2bf16b4ff313fe40ddeb110968380fcc8514983ef5"
+        }
+      ]
+    },
+    {
+      "project": "15_RGBLCD",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 36864,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\15_RGBLCD.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 36864
+        }
+      ],
+      "sha256": "565edc7104fd47c0ec8607ca879be52c1aceb5a0555f4ab55e436a2145a39575",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\15_RGBLCD\\Binary\\appli.hex",
+          "sha256": "b3cc2c49ff0ab5e134bb0cd9719894e69c35af5fdaad878baa139dcde884843c"
+        }
+      ]
+    },
+    {
+      "project": "16_USMART",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 61088,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\16_USMART.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 61088
+        }
+      ],
+      "sha256": "834e95a1fb7c0f5b70c31d3aacfbab5e79c5bc2c9fa33e16710b13f140a1badc",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\16_USMART\\Binary\\appli.hex",
+          "sha256": "1257f2ceede4d50ef9ce32bd996e8f8140bdee5e753cf1d471893df58bdd3fc6"
+        }
+      ]
+    },
+    {
+      "project": "17_RTC",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 62368,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\17_RTC.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 62368
+        }
+      ],
+      "sha256": "78b643fbab3c2965b687c9757886c2b50190c4606545996a39e14dc910bb869c",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\17_RTC\\Binary\\appli.hex",
+          "sha256": "ceea7b12faf69f53c3f868335cbede973f7c39de4d97fd0fb529c97f935fb22b"
+        }
+      ]
+    },
+    {
+      "project": "18_RNG",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 35552,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\18_RNG.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 35552
+        }
+      ],
+      "sha256": "38df4eed8ed4024199e629db8ed1a8cdd00ceed9363a58903542f3b3e90a74c3",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\18_RNG\\Binary\\appli.hex",
+          "sha256": "0beaaa3d49e7bbd0c290ba2e2db2803788c3aaeb8c4b7ce7e009337e8bad560d"
+        }
+      ]
+    },
+    {
+      "project": "19_DMA",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 53824,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\19_DMA.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 53824
+        }
+      ],
+      "sha256": "fecde06243b740b107c5d97435c0e00e0aeb3fac7cf80c050e483768c0f74230",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\19_DMA\\Binary\\appli.hex",
+          "sha256": "b380a0e5b9657035c13225ea09a5a518daa721e62c453285ad89e3446ce929dc"
+        }
+      ]
+    },
+    {
+      "project": "20_ADC",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 38688,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\20_ADC.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 38688
+        }
+      ],
+      "sha256": "e3ad763d6431cdcda39a388715a459747d4bd3568a236a77c0f2151ac4e535df",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\20_ADC\\Binary\\appli.hex",
+          "sha256": "51ac057a0105d42799803969ed6a4baba5cb448837383e120df932fb8a14fe0e"
+        }
+      ]
+    },
+    {
+      "project": "21_DTS",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 35552,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\21_DTS.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 35552
+        }
+      ],
+      "sha256": "c9260fe8e0102dc70a25669887f215708fd6d78bf2a746d43946139e4d6848a6",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\21_DTS\\Binary\\appli.hex",
+          "sha256": "3e9c7fbfeca467f9bcc0d5775a6d07f30fb33dce4e4420386eb00eb5f8aca75e"
+        }
+      ]
+    },
+    {
+      "project": "22_PWMDAC",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 42624,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\22_PWMDAC.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 42624
+        }
+      ],
+      "sha256": "e3fd67426c28d29893f18ccecf54cd7f28d23373f10ef037d4077f60d1903ca9",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\22_PWMDAC\\Binary\\appli.hex",
+          "sha256": "ee32ba6a46ebe82e56179653c8c4bb962ed6fc552856ecee3166725b638e29a4"
+        }
+      ]
+    },
+    {
+      "project": "23_EEPROM",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 37632,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\23_EEPROM.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 37632
+        }
+      ],
+      "sha256": "93b78978d4263e8aa06462925d7ace943d75a333a5f84bc54682ff164ec9dd7c",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\23_EEPROM\\Binary\\appli.hex",
+          "sha256": "7a177b8246fd2812c328136f0cff0a62edcd8a403d0281dc2ead8aa6103a09ca"
+        }
+      ]
+    },
+    {
+      "project": "24_AP3216C",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 37024,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\24_AP3216C.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 37024
+        }
+      ],
+      "sha256": "1bbc48aef91348e4b12092d8596ef5c2407c6a6fd866ba170ee5e7f6b5d59256",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\24_AP3216C\\Binary\\appli.hex",
+          "sha256": "ff168569818407f5227e9eee3d02cc43427ea36fa2402f680e601a8a7377d777"
+        }
+      ]
+    },
+    {
+      "project": "25_RS485",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 48736,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\25_RS485.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 48736
+        }
+      ],
+      "sha256": "a5357f5ab3c63ce775452196b0977c7fe98bf3f48bc2dabbbe703fcd45a6b02b",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\25_RS485\\Binary\\appli.hex",
+          "sha256": "aeee20e47ba34b5a4f228674de10c88fedd341b030a0f266fb291efdaa7868cb"
+        }
+      ]
+    },
+    {
+      "project": "26_FDCAN__261_Internal_LoopBack",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 37760,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\26_FDCAN__261_Internal_LoopBack.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 37760
+        }
+      ],
+      "sha256": "ae1a942f2c581e10fce84da4674a5204cc0ed40de0c3d1801f5de1a475ee1f55",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\26_FDCAN\\261_Internal_LoopBack\\Binary\\appli.hex",
+          "sha256": "4c97f6e031f309358f8e7bf9a9ea6280e032ef1fcaa14768a2f34e324fad0ef5"
+        }
+      ]
+    },
+    {
+      "project": "26_FDCAN__262_Normal",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 37728,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\26_FDCAN__262_Normal.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 37728
+        }
+      ],
+      "sha256": "80891b372e34deac68ac11ba6f452691526693c944dba7ad2d2a5b45f800b2d0",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\26_FDCAN\\262_Normal\\Binary\\appli.hex",
+          "sha256": "7a7d5293c1885ace4ac89d1c8ccdaa1120074e914e0b41bd37b3466e50362038"
+        }
+      ]
+    },
+    {
+      "project": "27_Touch",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 45824,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\27_Touch.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 45824
+        }
+      ],
+      "sha256": "18cb28911ce2b50efe36ad9f75a1655fd2868937d5f29e9d011ee1310b3b7517",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\27_Touch\\Binary\\appli.hex",
+          "sha256": "e101687be21e1cbdab3aa892e12fd1cc969e7f2c33412ce67e5805d9c2c26fac"
+        }
+      ]
+    },
+    {
+      "project": "28_Remote",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 38272,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\28_Remote.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 38272
+        }
+      ],
+      "sha256": "7f659981bb074dae2ca17ec928ed913f9a9eb77b2bbc68403593f840b406276b",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\28_Remote\\Binary\\appli.hex",
+          "sha256": "239e5ec064228bacd4d7205a6d02d19805e03f214dd0e663615a95edca952e90"
+        }
+      ]
+    },
+    {
+      "project": "29_DS18B20",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 35328,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\29_DS18B20.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 35328
+        }
+      ],
+      "sha256": "10d00b782b0592667b699e82c787615b9e7c4d96c02970058816f67b7c625334",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\29_DS18B20\\Binary\\appli.hex",
+          "sha256": "80cecef45c73597544cce3ed6b855ed0225c2dbb86f2c92bce391a62afbc7be6"
+        }
+      ]
+    },
+    {
+      "project": "30_DHT11",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 35488,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\30_DHT11.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 35488
+        }
+      ],
+      "sha256": "d9fbc1e067225d2327a21df0d7118939ffaf6e781fa18d7f0092fdb564c84b2a",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\30_DHT11\\Binary\\appli.hex",
+          "sha256": "5f1107bc0bfe07a12289e41dd6b5966263e05655ad1697b4b2f75a229521d525"
+        }
+      ]
+    },
+    {
+      "project": "31_QMI8658A",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 59456,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\31_QMI8658A.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 59456
+        }
+      ],
+      "sha256": "0078b387ac06638f57afdb579412eea8dc455510b544d93678a95b3c3ca683de",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\31_QMI8658A\\Binary\\appli.hex",
+          "sha256": "09379cbd856ad1c40660d7bbd5ba5610c82a52651d9c361b8852c136224aa602"
+        }
+      ]
+    },
+    {
+      "project": "32_QMC6308",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 65792,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\32_QMC6308.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 65792
+        }
+      ],
+      "sha256": "476e9f8f82937b7090cc5f56e25cdd9c21635f1e617d4001a89740c6f204d482",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\32_QMC6308\\Binary\\appli.hex",
+          "sha256": "6566d2872d7a563017170186bcc3fd631ebb8a476cb51e192025f5d0c2f65d34"
+        }
+      ]
+    },
+    {
+      "project": "33_Wireless",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 53568,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\33_Wireless.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 53568
+        }
+      ],
+      "sha256": "c25a36e01f78bee6714205dc231d438c8849eaa3d09d888cf50fdc6088686e29",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\33_Wireless\\Binary\\appli.hex",
+          "sha256": "516648c160d42d98c0cd36dc5fd3068a9061dbc912febd133de4e6fb957eb826"
+        }
+      ]
+    },
+    {
+      "project": "34_WS2812B__341_WS2812B_DMA",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 20896,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\34_WS2812B__341_WS2812B_DMA.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 20896
+        }
+      ],
+      "sha256": "5cfd28ced475a396f5594d810cfe503ac5d3cf95ed0a70805a847c89a8adf62c",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\34_WS2812B\\341_WS2812B_DMA\\Binary\\appli.hex",
+          "sha256": "8a9f9518f8b2b7517ed13a378a70fcb81e5f590c122e28f6c0048251de79d610"
+        }
+      ]
+    },
+    {
+      "project": "34_WS2812B__342_WS2812B_IO",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 13824,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\34_WS2812B__342_WS2812B_IO.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 13824
+        }
+      ],
+      "sha256": "013ddc5f57cf309b900fc37b704a425904dabe122e2928c4e1ded4c6672f6e55",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\34_WS2812B\\342_WS2812B_IO\\Binary\\appli.hex",
+          "sha256": "863d804853d0524c988f164010687bdab28de809f81dcbfa4c5c0f60a05a1e9a"
+        }
+      ]
+    },
+    {
+      "project": "35_Sensor__351_OV5640",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 45056,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\35_Sensor__351_OV5640.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 45056
+        }
+      ],
+      "sha256": "44871f283f147a451113bcc1e58a3a17d8ec6d58b98b9baa4814bd717a4dc861",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\35_Sensor\\351_OV5640\\Binary\\appli.hex",
+          "sha256": "4a9a108528c5f2c420e1d9a475d365206c88bba93bf14bdca8dc6bd9225d5325"
+        }
+      ]
+    },
+    {
+      "project": "35_Sensor__352_IMX335",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 89216,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\35_Sensor__352_IMX335.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 89216
+        }
+      ],
+      "sha256": "d5c2878ac8494f5fdad746b143e521de49207ba5418271093f58e3bcb44217f3",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\35_Sensor\\352_IMX335\\Binary\\appli.hex",
+          "sha256": "2ba56e9cb71d6d9734a69f203cc0c67aae25dc98ac2cf9fbe41cf2f7b9fb14ae"
+        }
+      ]
+    },
+    {
+      "project": "36_Memory_Management",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 38176,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\36_Memory_Management.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 38176
+        }
+      ],
+      "sha256": "497564428ddbca9755dfa1443bed28def672131d777bb7efaedd5e501f5fc308",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\36_Memory_Management\\Binary\\appli.hex",
+          "sha256": "8de52049df93ba537f2396520f35e583c358ab03e26470a96374cac90d2b6e27"
+        }
+      ]
+    },
+    {
+      "project": "37_SD_NAND",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 58816,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\37_SD_NAND.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 58816
+        }
+      ],
+      "sha256": "b473116bc77a971c86072b1f61803bb68467e55733f719f52222fd1f942722a1",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\37_SD_NAND\\Binary\\appli.hex",
+          "sha256": "049340945c90adaed9d8c55dbad70379578ca0d121ec5682e58ce6e7ed35eeba"
+        }
+      ]
+    },
+    {
+      "project": "38_SD_Card",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 58816,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\38_SD_Card.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 58816
+        }
+      ],
+      "sha256": "69aa4c13909e92b1e50b2163eb7fbf9091dc8d74bff65dae09370ccc9713ddc1",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\38_SD_Card\\Binary\\appli.hex",
+          "sha256": "daed16ec5bd02ed87176b15802fd0da203aab88f8eb3aabaa69c73e10e0330c6"
+        }
+      ]
+    },
+    {
+      "project": "39_FatFs",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 87168,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\39_FatFs.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 87168
+        }
+      ],
+      "sha256": "415333b38662f26e7a6979fa58fcb8dfd4bf97574706a7c2cf82bc977f2a8a50",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\39_FatFs\\Binary\\appli.hex",
+          "sha256": "f5b0c5e804e312c9dea50f835c07cb4592e0e30e9b57d1865297b6944aac9af2"
+        }
+      ]
+    },
+    {
+      "project": "40_Chinese_Show",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 76288,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\40_Chinese_Show.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 76288
+        }
+      ],
+      "sha256": "f44ea680878d7e074917a7f97d94702030a60c0c21d1f807040953d664662100",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\40_Chinese_Show\\Binary\\appli.hex",
+          "sha256": "6bd744726ed7e3bb641242335e07bd360b5312bcbfddc6f16a1a9fb194380258"
+        }
+      ]
+    },
+    {
+      "project": "41_Picture_Show",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 268864,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\41_Picture_Show.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 268864
+        }
+      ],
+      "sha256": "680b46e719cf9e20bad6b3d1a6b2a90fca9fa31a451f35182cd3f5eb86225cdc",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\41_Picture_Show\\Binary\\appli.hex",
+          "sha256": "0f54b5717b5b8ffeab15d59802c56ad440f6c9211daffe2c40a2c9ebc0183f0b"
+        }
+      ]
+    },
+    {
+      "project": "42_JPEG",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 341888,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\42_JPEG.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 341888
+        }
+      ],
+      "sha256": "43d9bd6e170406b58aee0fc8ab399f253c1f922fec08ca3c066720f7661cf595",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\42_JPEG\\Binary\\appli.hex",
+          "sha256": "753cddb7f48e8377eedf1405ba54ee370ebddd8457011d192e7b31d53d4a2e46"
+        }
+      ]
+    },
+    {
+      "project": "43_Camera",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 191040,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\43_Camera.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 191040
+        }
+      ],
+      "sha256": "9d272023da81577bdc13a6706a815640baea8295f8db312784032ad0ad73456c",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\43_Camera\\Binary\\appli.hex",
+          "sha256": "2a17482ea6c5b29fa98fe457f487c73a4ac31e00272241f3255d19bab0b0480d"
+        }
+      ]
+    },
+    {
+      "project": "44_Music_Player",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 255488,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\44_Music_Player.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 255488
+        }
+      ],
+      "sha256": "afd18a4d306db2ef41910135976e6d8faa061e414266f89a20a4f39889a1f9c6",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\44_Music_Player\\Binary\\appli.hex",
+          "sha256": "7f0303917d3e74000eea57d412c6c8f3d7aec532dd49751106e8f2f129e2c92c"
+        }
+      ]
+    },
+    {
+      "project": "45_Recorder",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 81184,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\45_Recorder.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 81184
+        }
+      ],
+      "sha256": "3aaf6c1c72b056ab9649fb4e0ef250698913860e7e4afa6bb195712768ccb64f",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\45_Recorder\\Binary\\appli.hex",
+          "sha256": "43e1c1ba2c9e376f21623ae7806998b4b9e1cbee50cc07213ee0d5b78a2700ef"
+        }
+      ]
+    },
+    {
+      "project": "46_SPDIF",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 70976,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\46_SPDIF.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 70976
+        }
+      ],
+      "sha256": "33d57302c0c571c667e5811aadd3ace3f5f227d5721fc45f16bcb051d993f2e2",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\46_SPDIF\\Binary\\appli.hex",
+          "sha256": "d0dcb05d31e6dd17e4b8378c560204c451e6d259a0509574fb8b0a6e5669bfc5"
+        }
+      ]
+    },
+    {
+      "project": "47_Video_Player",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 274144,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\47_Video_Player.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 274144
+        }
+      ],
+      "sha256": "cf7da5d9cf1ba03dd3fdc6a03945f5bb318d034c5f883e7256d9061e2dcc6a2e",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\47_Video_Player\\Binary\\appli.hex",
+          "sha256": "f8988a5be08c590b72760fdbb40e4194de57a5fce72a21e5dbccd70905562c9d"
+        }
+      ]
+    },
+    {
+      "project": "48_FPU__48-1_FPU_on",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 49888,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\48_FPU__48-1_FPU_on.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 49888
+        }
+      ],
+      "sha256": "bdd65b7bcbb762eff71ef5cac1d81b70a77181e287e42a99ce52d7da9df04ba3",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\48_FPU\\48-1_FPU_on\\Binary\\appli.hex",
+          "sha256": "3e86ade05de817f2b80a1494cf957e528ace5693c06308ea749549327ec8d6ed"
+        }
+      ]
+    },
+    {
+      "project": "48_FPU__48-2_FPU_off",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 42080,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\48_FPU__48-2_FPU_off.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 42080
+        }
+      ],
+      "sha256": "606c6b076b1c5e13684ab4aedb2456a0fa7bd231045f045410e114b29aa0db2f",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\48_FPU\\48-2_FPU_off\\Binary\\appli.hex",
+          "sha256": "8da9dda7ed504d5c9bc7c898bdc570f6c114b9d168dd26576046f0fe48c59e8e"
+        }
+      ]
+    },
+    {
+      "project": "49_DSP__49-1_DSP_BasicMath",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 60192,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\49_DSP__49-1_DSP_BasicMath.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 60192
+        }
+      ],
+      "sha256": "8550b8a1d20d0ebe227c3eb1f5056a2c46a738011e6869b22966d0c21ad742c4",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\49_DSP\\49-1_DSP_BasicMath\\Binary\\appli.hex",
+          "sha256": "cbe6bc70d6634cc8b0154caa6e059871510ea91d4642524b7053b148153f8d65"
+        }
+      ]
+    },
+    {
+      "project": "49_DSP__49-2_DSP_FFT",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 88448,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\49_DSP__49-2_DSP_FFT.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 88448
+        }
+      ],
+      "sha256": "45d4479efe3746f7b097db1517c344c22d7a14c4a5e9fab5865d52d9fbd6fdb5",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\49_DSP\\49-2_DSP_FFT\\Binary\\appli.hex",
+          "sha256": "51800db3683b032333cfaa2e8678ea2f5803786858b7137d340c3a9ae3e65bd0"
+        }
+      ]
+    },
+    {
+      "project": "50_Handwriting_Recognition",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 188416,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\50_Handwriting_Recognition.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 188416
+        }
+      ],
+      "sha256": "29d8782cf2904cd143a08a1f70600f0069f83829a896bab87d0c03264ff628f7",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\50_Handwriting_Recognition\\Binary\\appli.hex",
+          "sha256": "fa444176d36c8753cd3b11b3ae0346072d05bf98a644a34d8802a510a34527c1"
+        }
+      ]
+    },
+    {
+      "project": "51_T9_Pinyin",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 170336,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\51_T9_Pinyin.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 170336
+        }
+      ],
+      "sha256": "13a8a8cd8a2f0c4a4ddccfbf48f95f323ac9839027f7c77129a79b931d734c87",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\51_T9_Pinyin\\Binary\\appli.hex",
+          "sha256": "8dfd38b31671bf2f5f4e95b98e76466e7a52999c533a78717c752c59d37db4da"
+        }
+      ]
+    },
+    {
+      "project": "52_USB_Device_Card_Reader",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 68544,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\52_USB_Device_Card_Reader.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 68544
+        }
+      ],
+      "sha256": "594dcb535740261c96afbf542b51648dbeb8ead8477da3f9cd7c98654d942970",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\52_USB_Device_Card_Reader\\Binary\\appli.hex",
+          "sha256": "9b85eb9fd5d3444eb9d536a6a4f414698dd8db2b9647e4acabfcc250fa2e8736"
+        }
+      ]
+    },
+    {
+      "project": "53_USB_Device_Sound_Card",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 75392,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\53_USB_Device_Sound_Card.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 75392
+        }
+      ],
+      "sha256": "978dbfbaf62747ba79a580a20101ee094cd93d3201b85cad418d7da426c843a3",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\53_USB_Device_Sound_Card\\Binary\\appli.hex",
+          "sha256": "814b7841ba1d98bd274f0108260fc8aa91f7044ea51cbf0771d6f990ec8630f9"
+        }
+      ]
+    },
+    {
+      "project": "54_USB_Device_Virtual_Serial",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 56832,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\54_USB_Device_Virtual_Serial.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 56832
+        }
+      ],
+      "sha256": "20d03cf881c82dfceb3e168d066d792081576af240e8427dbc723224a07ab01b",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\54_USB_Device_Virtual_Serial\\Binary\\appli.hex",
+          "sha256": "dc4a5813a60e551be009b431817cbc81fab650eff5526b235be94cc3df6d4560"
+        }
+      ]
+    },
+    {
+      "project": "55_USB_Host_Disk",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 107200,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\55_USB_Host_Disk.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 107200
+        }
+      ],
+      "sha256": "f036c0d418f545b84f5b55fb5515079f97a0d8d4268c568a45816c2176789f45",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\55_USB_Host_Disk\\Binary\\appli.hex",
+          "sha256": "fe474867a80dce384a8f890fa3f4c6f16d9707bf237f0ab43303a0feefb5e584"
+        }
+      ]
+    },
+    {
+      "project": "56_USB_Host_HID",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 59360,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\56_USB_Host_HID.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 59360
+        }
+      ],
+      "sha256": "de70e50c2bf61ef2a952abf39df6d79665e5f6b36e83424a427900b76d1fc0aa",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\56_USB_Host_HID\\Binary\\appli.hex",
+          "sha256": "d6bbbe46cbb1936b662e991088c50ce043cdc9768583bed4ee7ed44bc42d7045"
+        }
+      ]
+    },
+    {
+      "project": "57_ThreadX_Thread",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 10208,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\57_ThreadX_Thread.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 10208
+        }
+      ],
+      "sha256": "a208c7534ba0f987ca047187cff7ec200de2504af431b7b3e04181b2fb967df5",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\57_ThreadX_Thread\\Binary\\appli.hex",
+          "sha256": "d2168ca41285f7ccce601e9ab5c46033ac9cec8dd4d6f6219c2effbc624157f2"
+        }
+      ]
+    },
+    {
+      "project": "58_ThreadX_Semaphore",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 11456,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\58_ThreadX_Semaphore.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 11456
+        }
+      ],
+      "sha256": "85f659b584889d85b3516752b0005081a3480c44f67f33b4e0fbb8d953fd80c5",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\58_ThreadX_Semaphore\\Binary\\appli.hex",
+          "sha256": "1a6f37619d15486579526add26c96128d94eca34bce576005537554d84d5b0df"
+        }
+      ]
+    },
+    {
+      "project": "59_ThreadX_Timer",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 11456,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\59_ThreadX_Timer.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 11456
+        }
+      ],
+      "sha256": "7ad87fc8a0d40e453ab418c52dcc7f8f43e33d4d43274804bf37c76a5faa5f2e",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\59_ThreadX_Timer\\Binary\\appli.hex",
+          "sha256": "4eca740f00828e13e5e7a8a44eadf5fdb7a9be7fad856afa392ce225b2a82719"
+        }
+      ]
+    },
+    {
+      "project": "60_ThreadX_Queue",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 42400,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\60_ThreadX_Queue.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 42400
+        }
+      ],
+      "sha256": "18ecf6d541a6a8d49235d3a2d04065e6d6e3556514a7ba292a729b5167806cc9",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\60_ThreadX_Queue\\Binary\\appli.hex",
+          "sha256": "ef460fb06b9b77609beb70650aa8395bb579a9a873d1f76b5b9b8508b6e89bce"
+        }
+      ]
+    },
+    {
+      "project": "61_NetXDuo_TCP_Client",
+      "profile": 1,
+      "clock_mhz": 600,
+      "image_bytes": 80192,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\61_NetXDuo_TCP_Client.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 80192
+        }
+      ],
+      "sha256": "2fe8cf7d21c7777b61d0562db7cbb2a0d1889e64d9ff8aad49d2e0ef20a3e0d3",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\61_NetXDuo_TCP_Client\\Binary\\appli.hex",
+          "sha256": "bada4682ca1e8a946cc96a946b0bcc93a9f9ccc4f34813106e0cc122f73646f0"
+        }
+      ]
+    },
+    {
+      "project": "99_Applications__991_AI_People_Detection",
+      "profile": 2,
+      "clock_mhz": 800,
+      "image_bytes": 4065633,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\99_Applications__991_AI_People_Detection.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 473984
+        },
+        {
+          "address": "0x70200000",
+          "bytes": 3018081
+        }
+      ],
+      "sha256": "bd2ed6f3b9b9855446c9e5f3ca855fa8ada7ce946ae1c021d874d0b2b952faec",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\991_AI_People_Detection\\Binary\\appli.hex",
+          "sha256": "79b5639746abe50b05e074770a821a38651b086cb49a4b4bcbf209955b472b11"
+        },
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\991_AI_People_Detection\\Binary\\network-data.hex",
+          "sha256": "0f08471b344fe7b68dece1bb8cfd1e0614fe4d92349710e63727fa38a9c7e246"
+        }
+      ]
+    },
+    {
+      "project": "99_Applications__992_AI_Image_Classification",
+      "profile": 2,
+      "clock_mhz": 800,
+      "image_bytes": 10186577,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\99_Applications__992_AI_Image_Classification.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 970816
+        },
+        {
+          "address": "0x70200000",
+          "bytes": 9139025
+        }
+      ],
+      "sha256": "e379ce7952cd9a470173cdc45fb71d1ccaa856a2c62de8a4a4e47ce58ab9607c",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\992_AI_Image_Classification\\Binary\\appli.hex",
+          "sha256": "92c3a3ee50c3918426df168ecf8d586fd614f3648733438cebdc0b7092f2c36a"
+        },
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\992_AI_Image_Classification\\Binary\\network-data.hex",
+          "sha256": "b71bc1e4740b5406dfc6f00c67e7c2888b37d39c0d90e4e18908cebc29c0f642"
+        }
+      ]
+    },
+    {
+      "project": "99_Applications__993_AI_Instance_Segmentation",
+      "profile": 2,
+      "clock_mhz": 800,
+      "image_bytes": 4555153,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\99_Applications__993_AI_Instance_Segmentation.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 540704
+        },
+        {
+          "address": "0x70200000",
+          "bytes": 3507601
+        }
+      ],
+      "sha256": "c02b2e5c11452016bf169079f4636ab3be8dc3dbe81575a0fda0f246110fe423",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\993_AI_Instance_Segmentation\\Binary\\appli.hex",
+          "sha256": "434a5e010ecf1cf2fa1ba3c0d7c48ec832807ab78f17f447cc96b4a7aa8c7e5a"
+        },
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\993_AI_Instance_Segmentation\\Binary\\network-data.hex",
+          "sha256": "ce79aa6ac3bd532d322dd986a0e7233a84d167f163e234679d31570d20958ee7"
+        }
+      ]
+    },
+    {
+      "project": "99_Applications__994_AI_Multi_Pose_Estimation",
+      "profile": 2,
+      "clock_mhz": 800,
+      "image_bytes": 4391137,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\99_Applications__994_AI_Multi_Pose_Estimation.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 607808
+        },
+        {
+          "address": "0x70200000",
+          "bytes": 3343585
+        }
+      ],
+      "sha256": "1e7044645853cb64ddca527435708a1d467ea7cfeb2816671bdb0d7a812ef922",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\994_AI_Multi_Pose_Estimation\\Binary\\appli.hex",
+          "sha256": "af72771fdeaa8b4e085318559dcb4d3df3f9e09255f77ef02a89082b2aa2496a"
+        },
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\994_AI_Multi_Pose_Estimation\\Binary\\network-data.hex",
+          "sha256": "5f65730223cf980cfb6d64fb159400552fa086a4646eea5fb72c692101d67d4e"
+        }
+      ]
+    },
+    {
+      "project": "99_Applications__995_AI_Hand_Landmarks",
+      "profile": 2,
+      "clock_mhz": 800,
+      "image_bytes": 6506881,
+      "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\99_Applications__995_AI_Hand_Landmarks.ota",
+      "segments": [
+        {
+          "address": "0x70100400",
+          "bytes": 1040352
+        },
+        {
+          "address": "0x70200000",
+          "bytes": 1198081
+        },
+        {
+          "address": "0x70400000",
+          "bytes": 3362177
+        }
+      ],
+      "sha256": "75b91e7550facac3fe55dd0d343aaa9abc27f5b38dadfc9d79967eec0cd456f9",
+      "sources": [
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\995_AI_Hand_Landmarks\\Binary\\appli.hex",
+          "sha256": "dc40b04dc28f0585e2ce27ac5b1c3ecd04fcc84c3829f3319082feb5890d2586"
+        },
+        {
+          "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\99_Applications\\995_AI_Hand_Landmarks\\Binary\\network-data.hex",
+          "sha256": "a2586ac29252c2d17ec8508fc848c56e15367a1f92804cbd2fc4410d639b6265"
+        }
+      ]
+    }
+  ],
+  "failed": [],
+  "validation": "Address, vector, paired resources and CRC checks only; hardware operation is not yet verified."
+}

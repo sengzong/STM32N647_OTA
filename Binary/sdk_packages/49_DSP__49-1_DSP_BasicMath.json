@@ -1,0 +1,20 @@
+{
+  "project": "49_DSP__49-1_DSP_BasicMath",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 60192,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\49_DSP__49-1_DSP_BasicMath.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 60192
+    }
+  ],
+  "sha256": "8550b8a1d20d0ebe227c3eb1f5056a2c46a738011e6869b22966d0c21ad742c4",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\49_DSP\\49-1_DSP_BasicMath\\Binary\\appli.hex",
+      "sha256": "cbe6bc70d6634cc8b0154caa6e059871510ea91d4642524b7053b148153f8d65"
+    }
+  ]
+}

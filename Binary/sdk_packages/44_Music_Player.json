@@ -1,0 +1,20 @@
+{
+  "project": "44_Music_Player",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 255488,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\44_Music_Player.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 255488
+    }
+  ],
+  "sha256": "afd18a4d306db2ef41910135976e6d8faa061e414266f89a20a4f39889a1f9c6",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\44_Music_Player\\Binary\\appli.hex",
+      "sha256": "7f0303917d3e74000eea57d412c6c8f3d7aec532dd49751106e8f2f129e2c92c"
+    }
+  ]
+}

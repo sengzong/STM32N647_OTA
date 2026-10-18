@@ -1,0 +1,20 @@
+{
+  "project": "38_SD_Card",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 58816,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\38_SD_Card.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 58816
+    }
+  ],
+  "sha256": "69aa4c13909e92b1e50b2163eb7fbf9091dc8d74bff65dae09370ccc9713ddc1",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\38_SD_Card\\Binary\\appli.hex",
+      "sha256": "daed16ec5bd02ed87176b15802fd0da203aab88f8eb3aabaa69c73e10e0330c6"
+    }
+  ]
+}

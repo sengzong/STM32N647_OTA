@@ -1,0 +1,20 @@
+{
+  "project": "05_Serial",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 27040,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\05_Serial.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 27040
+    }
+  ],
+  "sha256": "58a80a6818b688ba1911a3acf80cec88c6804ea2bb784ed2e80fdf25333317d8",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\05_Serial\\Binary\\appli.hex",
+      "sha256": "6770835771d00b38b5a1a870df1c76e66c8d07e699adca0a5621e6eeb641f362"
+    }
+  ]
+}

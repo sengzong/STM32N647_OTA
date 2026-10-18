@@ -1,0 +1,20 @@
+{
+  "project": "37_SD_NAND",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 58816,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\37_SD_NAND.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 58816
+    }
+  ],
+  "sha256": "b473116bc77a971c86072b1f61803bb68467e55733f719f52222fd1f942722a1",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\37_SD_NAND\\Binary\\appli.hex",
+      "sha256": "049340945c90adaed9d8c55dbad70379578ca0d121ec5682e58ce6e7ed35eeba"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "project": "24_AP3216C",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 37024,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\24_AP3216C.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 37024
+    }
+  ],
+  "sha256": "1bbc48aef91348e4b12092d8596ef5c2407c6a6fd866ba170ee5e7f6b5d59256",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\24_AP3216C\\Binary\\appli.hex",
+      "sha256": "ff168569818407f5227e9eee3d02cc43427ea36fa2402f680e601a8a7377d777"
+    }
+  ]
+}

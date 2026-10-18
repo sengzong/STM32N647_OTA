@@ -29,6 +29,7 @@
 #include "../../Drivers/BSP/YT8512C/yt8512c.h"
 #include "app_azure_rtos.h"             /* ThreadX: tx_application_define + tx_kernel_enter */
 #include "app_ota_flash.h"
+#include "../../Drivers/BSP/UART/uart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

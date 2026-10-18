@@ -88,7 +88,11 @@ _tx_initialize_low_level:
 
     /* Configure SysTick.  */
     MOV     r0, #0xE000E000                         // Build address of NVIC registers
-    LDR     r1, =SYSTICK_CYCLES
+    LDR     r1, =SystemCoreClock
+    LDR     r1, [r1]
+    MOVS    r2, #100
+    UDIV    r1, r1, r2
+    SUBS    r1, r1, #1
     STR     r1, [r0, #0x14]                         // Setup SysTick Reload Value
     MOV     r1, #0x7                                // Build SysTick Control Enable Value
     STR     r1, [r0, #0x10]                         // Setup SysTick Control

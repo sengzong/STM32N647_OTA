@@ -1,0 +1,20 @@
+{
+  "project": "15_RGBLCD",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 36864,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\15_RGBLCD.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 36864
+    }
+  ],
+  "sha256": "565edc7104fd47c0ec8607ca879be52c1aceb5a0555f4ab55e436a2145a39575",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\15_RGBLCD\\Binary\\appli.hex",
+      "sha256": "b3cc2c49ff0ab5e134bb0cd9719894e69c35af5fdaad878baa139dcde884843c"
+    }
+  ]
+}

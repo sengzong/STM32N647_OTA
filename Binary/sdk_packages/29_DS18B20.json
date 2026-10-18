@@ -1,0 +1,20 @@
+{
+  "project": "29_DS18B20",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 35328,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\29_DS18B20.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 35328
+    }
+  ],
+  "sha256": "10d00b782b0592667b699e82c787615b9e7c4d96c02970058816f67b7c625334",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\29_DS18B20\\Binary\\appli.hex",
+      "sha256": "80cecef45c73597544cce3ed6b855ed0225c2dbb86f2c92bce391a62afbc7be6"
+    }
+  ]
+}

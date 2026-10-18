@@ -1,0 +1,20 @@
+{
+  "project": "09_General_Purpose_Timer__092_PWM",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 7104,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\09_General_Purpose_Timer__092_PWM.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 7104
+    }
+  ],
+  "sha256": "dd267fca3b9d1fddeacda9ef0355b3ea7c9c047dba908b156986100dd9ebcf94",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\09_General_Purpose_Timer\\092_PWM\\Binary\\appli.hex",
+      "sha256": "dbf39b78673ba5316d15079c4b7b123392e789712142d057bd838775686c9720"
+    }
+  ]
+}

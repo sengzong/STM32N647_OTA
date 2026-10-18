@@ -1,0 +1,20 @@
+{
+  "project": "17_RTC",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 62368,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\17_RTC.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 62368
+    }
+  ],
+  "sha256": "78b643fbab3c2965b687c9757886c2b50190c4606545996a39e14dc910bb869c",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\17_RTC\\Binary\\appli.hex",
+      "sha256": "ceea7b12faf69f53c3f868335cbede973f7c39de4d97fd0fb529c97f935fb22b"
+    }
+  ]
+}

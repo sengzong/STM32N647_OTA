@@ -1,0 +1,20 @@
+{
+  "project": "12_OLED",
+  "profile": 1,
+  "clock_mhz": 600,
+  "image_bytes": 11392,
+  "package": "F:\\stm32CubeIde\\Project\\LED_2_noai\\Binary\\sdk_packages\\12_OLED.ota",
+  "segments": [
+    {
+      "address": "0x70100400",
+      "bytes": 11392
+    }
+  ],
+  "sha256": "a24dbc4bc87bb6fc3f6b3544a8d05580d015c98c9829f05a47845888ed901989",
+  "sources": [
+    {
+      "path": "F:\\stm32CubeIde\\Project\\Software_Package\\Software_Package\\Projects\\12_OLED\\Binary\\appli.hex",
+      "sha256": "421bd184f440195b22adb474538952c108e207c0d00c9a4d2e620dd7bacbe446"
+    }
+  ]
+}
