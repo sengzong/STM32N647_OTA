@@ -100,7 +100,12 @@ class PackageTests(unittest.TestCase):
                 client.request("POST", "/api/send", body, {"Content-Type": "application/json"})
                 self.assertTrue(json.loads(client.getresponse().read())["ok"])
                 self.assertTrue(completed.wait(5))
-                self.assertEqual(received, [((app, 1, "LED"), zlib.crc32(app), False)])
+                from ota_metadata import decode_metadata
+                actual, crc, rollback = received[0]
+                self.assertEqual(actual[:2], (app, 1))
+                self.assertEqual((crc, rollback), (zlib.crc32(app), False))
+                self.assertEqual(decode_metadata(actual[2]),
+                                 {"name":"SDK", "version":"", "model":0, "description":"LED"})
                 client.close()
             finally:
                 server.shutdown(); server.server_close(); thread.join(5)

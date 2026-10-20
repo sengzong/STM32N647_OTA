@@ -3,9 +3,13 @@
 | 用途 | 文件或目录 |
 |---|---|
 | 首次安装支持 1～61、99 AI 的 OTA | [compat/initial_install.hex](compat/initial_install.hex) |
+| 双击合成完整安装 HEX 的便携工具 | [../Portable/InitialInstallMerger.zip](../Portable/InitialInstallMerger.zip) |
 | 后续通过网线升级例程 | [sdk_packages/README.md](sdk_packages/README.md) 中对应的 `.ota` |
 | 当前保留的 991 RT30 R2 | [991_realtime_30/991_realtime_30.hex](991_realtime_30/991_realtime_30.hex) |
 | 当前 RT30 的应用和模型一起网口升级 | [991_realtime_30/991_realtime_30.ota](991_realtime_30/991_realtime_30.ota) |
+| 已装兼容 FSBL，仅启用 LVGL 接收画面 | [compat/agent.hex](compat/agent.hex) |
+| Programmer 更新白色固件列表、Yes 确认页为 LVGL | [compat/management_update.hex](compat/management_update.hex) |
+| LVGL 的 SD 卡中文字库与主题 | [../SD_Card/README.md](../SD_Card/README.md) |
 
 `compat/initial_install.hex` 已包含 FSBL、独立网口 Agent、管理应用和初始化记录。
 用 STM32CubeProgrammer 与板级 external loader 烧入；HEX 自带地址。
@@ -14,6 +18,20 @@
 
 安装后启动根目录的 `ota_gui.py`，选择例程的 `.ota` 文件发送，再复位板子。
 AI 包已包含配套模型。`.ota` 由上位机发送，不能当作 HEX 交给 Programmer 烧录。
+
+2026-10-18 的兼容 Agent 增加 LVGL 进度画面，串口标识 AGENT-LVGL-SD v4。
+当前已装兼容 FSBL 的板子只需 Programmer 更新 compat/agent.hex，即可在复位后
+独立升级窗口显示固件信息；无需重新刷会初始化应用/槽位的 initial_install.hex。
+这版已通过编译和主机测试，LCD、SDMMC 与实际卡仍待上板验证。
+
+2026-10-19 的管理应用将白色固件列表和 Yes 确认页改为 LVGL 深色卡片界面，
+串口标识 FW-LVGL v4。先点 Yes, review，再点 Yes, install；Back 可返回。
+接收新包时自动进入进度页，结束后刷新最新固件。主题沿用 SD 卡 ota_ui/theme.cfg。
+用 Programmer 更新此管理页面时烧 compat/management_update.hex，已合入应用及
+当前镜像长度/启动配置，保证后续回滚备份的范围正确；单刷 agent.hex 不会替换旧管理应用。
+management_update.hex 会替换当前运行应用，暂存及回滚区不初始化。
+appli.hex 保留为纯应用，适用于网页 OTA 发送或迁移工具，不作为推荐的单独 SWD 更新文件。
+initial_install.hex 也已合并新管理应用与 Agent，适用于首次安装或重新初始化。
 
 `compat/` 内的 fsbl_universal.hex、agent.hex、appli.hex 是同一版本的独立组件，
 保留用于单独维护和迁移工具，首次安装时使用合并的 initial_install.hex 即可。

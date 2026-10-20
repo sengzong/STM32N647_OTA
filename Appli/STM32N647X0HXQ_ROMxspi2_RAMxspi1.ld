@@ -63,6 +63,8 @@ SECTIONS
   {
     . = ALIGN(8);
     *(.EXTRAM)
+    . = ALIGN(32);
+    *(.OTA_ASSETS)
     . = ALIGN(8);
   } >EXTRAM
 

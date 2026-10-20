@@ -5,8 +5,8 @@
   *
   * Differences vs. the application's Appli/Core/Src/app_azure_rtos.c:
   *   - app_threadx_init() is NOT called: that one creates the LCD/touch UI
-  *     thread, and this image has no display.
-  *   - in its place a tiny supervisor thread is created. It is not a feature
+  *     thread with touch installation controls.
+  *   - in its place a supervisor thread owns the LVGL progress display. It is not a feature
   *     for its own sake: it gives the agent a visible heartbeat (LED0 plus a
   *     periodic slot dump) so an operator can tell at a glance whether the
   *     board is running the agent or the application, and the NetXDuo threads
@@ -22,6 +22,7 @@
 #include "app_ota_flash.h"
 #include "main.h"
 #include "stdio.h"
+#include "ota_screen.h"
 
 #if (USE_STATIC_ALLOCATION == 1)
 __ALIGN_BEGIN static UCHAR tx_byte_pool_buffer[TX_APP_MEM_POOL_SIZE] __ALIGN_END;
@@ -30,7 +31,7 @@ __ALIGN_BEGIN static UCHAR nx_byte_pool_buffer[NX_APP_MEM_POOL_SIZE] __attribute
 static TX_BYTE_POOL nx_app_byte_pool;
 #endif
 
-#define SUP_THREAD_STACK_SIZE   2048
+#define SUP_THREAD_STACK_SIZE   8192
 #define SUP_THREAD_PRIORITY     24      /* lower priority than the OTA thread (10) */
 
 #define SUP_LED_PERIOD_TICKS    5       /* ThreadX tick is 100 Hz -> 50 ms    */
@@ -48,10 +49,13 @@ static VOID sup_thread_entry(ULONG id)
     (void)id;
 
     printf("AGENT: supervisor thread up, heartbeat on LED0 (PG10)\r\n");
+    ota_screen_init();
+    ota_screen_show();
 
     for (;;)
     {
         ota_gateway_poll();
+        ota_screen_poll();
         HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_10);
 
         if ((tick % SUP_LOG_PERIOD_TICKS) == 0u)

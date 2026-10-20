@@ -169,7 +169,7 @@ void rgblcd_init(void)
     HAL_LTDC_SetAddress(&hltdc, (uint32_t)g_ltdc_lcd_framebuf, 0);
 
     rgblcd_display_dir(0);
-    rgblcd_clear(0xFFFF);
+    rgblcd_clear(0x08A4); /* Dark background before LVGL draws its first frame. */
     RGBLCD_BL(1);
 }
 

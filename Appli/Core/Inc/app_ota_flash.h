@@ -33,6 +33,7 @@ typedef struct {
 #define OTA_F_RESET   0x00000010u  /* 完成后 CPU 复位(生产 OTA); 未置则恢复内存映射后返回 */
 #define OTA_F_ID      0x00000020u  /* 读 JEDEC ID(0x9F, 6 字节), 用于验证 OPI 读路径真伪 */
 #define OTA_F_WRITE_ONLY 0x00000040u /* Program an already erased range, no erase. */
+#define OTA_F_QUIET      0x00000080u /* Suppress per-sector success diagnostics. */
 
 /* ---- 多槽位固件: 引导区(0x100000)常驻当前固件; 新固件先入槽位, 切换=拷槽位覆盖引导区 ----
  * 槽位布局: [64B 描述头 | 固件镜像], 等宽间距排在 NOR 高区(避开 FSBL/引导区) */

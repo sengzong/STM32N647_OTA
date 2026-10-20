@@ -28,3 +28,7 @@ do not get lost behind a large PC-side send queue. A success reply before the
 entire payload has been submitted is rejected. Fragmented acknowledgements still
 require all 16 bytes and the expected CRC/staging index. Socket progress is the
 PC-submitted byte count, not proof of board reception or verified NOR storage.
+
+make_transfer optionally accepts firmware_version. When supplied (including an
+empty string), it carries bounded display metadata in the existing UTF-8 description.
+The target profile and application/model image bytes are preserved. See ota_metadata.md.

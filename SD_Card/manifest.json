@@ -1,0 +1,9 @@
+{
+  "source": "Middlewares\\LVGL\\src\\font\\lv_font_simsun_16_cjk.c",
+  "source_sha256": "c81c9a0ac74bafcd19afcdf07c303efa625744df83cd604d0a295bc974389025",
+  "glyphs": 1436,
+  "font_bytes": 182316,
+  "font_sha256": "70159836d52370947b593620079d2bba58d9f1c0135d78a8e08b548fa3381d81",
+  "fallback_bytes": 453,
+  "path_on_card": "/ota_ui/cjk16.bin"
+}

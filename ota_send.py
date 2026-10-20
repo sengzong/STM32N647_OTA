@@ -14,6 +14,7 @@ def main():
     parser.add_argument("--port", type=int, default=8080)
     parser.add_argument("--file", default=str(Path(__file__).parent / "Binary/appli.bin"))
     parser.add_argument("--desc", default="Application")
+    parser.add_argument("--version", default="", help="固件版本号；未填写显示未提供")
     parser.add_argument("--yes", action="store_true", help="无需再次确认")
     parser.add_argument("--rollback", action="store_true", help="恢复上一版固件，无需提供文件")
     args = parser.parse_args()
@@ -22,7 +23,7 @@ def main():
             payload, crc = make_rollback()
             print("请求回滚到上一版固件")
         else:
-            payload, crc = make_transfer(args.file, Path(args.file).read_bytes(), args.desc)
+            payload, crc = make_transfer(args.file, Path(args.file).read_bytes(), args.desc, args.version)
             print(f"升级数据 {len(payload):,} 字节，CRC32={crc:08X}")
         if not args.yes and input("确认发送给板子(y/N)? ").strip().lower() not in ("y", "yes"):
             return 0

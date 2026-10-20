@@ -105,7 +105,7 @@ class Handler(BaseHTTPRequestHandler):
         rollback = j.get("action") == "rollback"
         try:
             if not rollback:
-                payload, crc = make_transfer(fn, data, desc)
+                payload, crc = make_transfer(fn, data, desc, j.get("version", "").strip())
             else:
                 fn, desc = "回滚上一版", "回滚上一版"
                 payload, crc = make_rollback()
@@ -156,6 +156,8 @@ HTML = r"""<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 <div class="fname" id="fname"></div>
 <label>描述（切换界面会显示）</label>
 <input type="text" id="desc" placeholder="例如：Camera demo v2" maxlength="200">
+<label>固件版本号（显示在开发板，选填）</label>
+<input type="text" id="version" placeholder="例如：1.2.0；留空显示“未提供”" maxlength="63">
 <div class="row"><button id="send" disabled>发送新固件</button><button id="rollback">回滚上一版</button><span class="pct" id="pct"></span></div>
 <div class="bar"><i id="bar"></i></div>
 <div class="log" id="log"></div>
@@ -185,7 +187,7 @@ $('send').onclick=async()=>{
   const b64=await toB64(new Blob([fileBuf]));
   try {
     const result=await (await fetch('/api/send',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({file:fileName,desc:desc,data:b64})})).json();
+      body:JSON.stringify({file:fileName,desc:desc,version:$('version').value.trim(),data:b64})})).json();
     if(!result.ok){alert(result.err);$('send').disabled=false;}
   } catch(e) { alert('发送请求失败：'+e.message);$('send').disabled=false; }
 };

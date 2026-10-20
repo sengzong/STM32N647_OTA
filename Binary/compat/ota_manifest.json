@@ -1,22 +1,27 @@
 {
   "appli.hex": {
     "base": "0x70100400",
-    "bytes": 114304,
-    "sha256": "f74d53979ddf4677af6b7100231e4107175592d24b0b2f18a3a84dccad6ff367"
+    "bytes": 283328,
+    "sha256": "b3b2636bf264a406caa167ee2f033f7fa6519aa5c8e8d549e6e275e9653f7155"
   },
   "agent.hex": {
     "base": "0x71f00400",
-    "bytes": 80512,
-    "sha256": "dcb105cff0d1f6b4b063fac48cd22652334bfebb0d1d93108c87ad8000a4296e"
+    "bytes": 247936,
+    "sha256": "55b2c2ce11f6d3c01079a7a968559e9bd8dc207b36d3aed408a1254fd7bc2e05"
   },
   "fsbl_universal.hex": {
     "base": "0x70000000",
     "bytes": 36960,
-    "sha256": "36217a196ef6e256968fcf3628ba02ef3bca2423c3f03759f5fd1fa877f97369"
+    "sha256": "766081ecfdcce9fd29cf1f390ae27424c48bd7ef7991d803a8fd5f8413a19c4e"
+  },
+  "management_update.hex": {
+    "base": "0x70100000",
+    "bytes": 284352,
+    "sha256": "d3f2ed7c1d644dd4d75761fa36844960c7b60c15dcee3029b3b5c90d3731a2a2"
   },
   "initial_install.hex": {
     "base": "multiple",
-    "bytes": 245088,
-    "sha256": "32dc2440dc6ffdf6192ee1c2442aeaa4b2a5e29bae05a90ad8ae65538de609f3"
+    "bytes": 581536,
+    "sha256": "cd209cffcc8812b66cb90ca5052da677774c778620102c9976ca339b73ea43b7"
   }
 }

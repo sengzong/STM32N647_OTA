@@ -46,10 +46,14 @@ HAL_SRC = [
     "stm32n6xx_hal_uart",
     "stm32n6xx_hal_uart_ex",
     "stm32n6xx_hal_xspi",
+    "stm32n6xx_hal_sd",
+    "stm32n6xx_hal_sd_ex",
+    "stm32n6xx_ll_sdmmc",
+    "stm32n6xx_ll_dlyb",
 ]
 
-# --- application sources reused verbatim (chosen so that the agent image has no
-#     LCD / touch / camera / framebuffer dependency at all):
+# --- application sources reused verbatim; the receiver now includes LCD/LVGL
+#     while camera and touch remain application-only:
 #       app_netxduo.c          ETH + NetXDuo + the whole OTA/slot/BOOTREC logic
 #       nx_stm32_phy_driver.c  YT8512C link state mapping
 #       stm32n6xx_hal_msp.c    ETH/UART/XSPI/CAM MSP (shared, harmless extras)
@@ -60,6 +64,11 @@ HAL_SRC = [
 #       secure_nsc.c           NSC veneers (same as the application)
 SHARED_CORE_SRC = [
     "app_netxduo.c",
+    "ota_status.c",
+    "ota_screen.c",
+    "ota_assets.c",
+    "ota_asset_font.c",
+    "ota_sd_disk.c",
     "nx_stm32_phy_driver.c",
     "secure_nsc.c",
     "stm32n6xx_hal_msp.c",
@@ -84,6 +93,7 @@ BSP_FILES = [
     ("SYS", ""),          # placeholder, filtered out below
     ("UART", "uart.c"),
     ("YT8512C", "yt8512c.c"),
+    ("RGBLCD", "rgblcd.c"),
 ]
 BSP_FILES = [(d, f) for d, f in BSP_FILES if f]
 
@@ -162,6 +172,7 @@ C_DEFINES = [
     "TX_INCLUDE_USER_DEFINE_FILE",
     "NX_INCLUDE_USER_DEFINE_FILE",
     "LED2_OTA_AGENT",
+    "LV_CONF_INCLUDE_SIMPLE",
 ]
 
 C_INCLUDES = [
@@ -174,6 +185,9 @@ C_INCLUDES = [
     "../../Drivers/CMSIS/Include",
     "../../Appli/Drivers/BSP/UART",
     "../../Appli/Drivers/BSP/YT8512C",
+    "../../Appli/Drivers/BSP/RGBLCD",
+    "../../Middlewares/LVGL",
+    "../../Middlewares/FATFS",
     "../../Middlewares/THREADX/common/inc",
     "../../Middlewares/THREADX/ports/cortex_m55/gnu/inc",
     "../../Middlewares/NETXDUO/common/inc",
@@ -365,7 +379,8 @@ def build_cproject():
     a('\t\t\t\t\t</folderInfo>\n')
     a('\t\t\t\t\t<sourceEntries>\n')
     for s in ["Core", "Drivers", "Middlewares"]:
-        a('\t\t\t\t\t\t<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="%s"/>\n' % s)
+        exclude = ' excluding="ST"' if s == "Middlewares" else ''
+        a('\t\t\t\t\t\t<entry%s flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="%s"/>\n' % (exclude, s))
     a('\t\t\t\t\t</sourceEntries>\n')
     a('\t\t\t\t</configuration>\n')
     a('\t\t\t</storageModule>\n')

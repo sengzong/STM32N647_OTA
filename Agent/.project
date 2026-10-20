@@ -59,9 +59,39 @@
 			<locationURI>PARENT-1-PROJECT_LOC/Appli/Drivers/BSP/YT8512C/yt8512c.c</locationURI>
 		</link>
 		<link>
+			<name>Drivers/BSP/RGBLCD/rgblcd.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Appli/Drivers/BSP/RGBLCD/rgblcd.c</locationURI>
+		</link>
+		<link>
 			<name>Core/Src/app_netxduo.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Appli/Core/Src/app_netxduo.c</locationURI>
+		</link>
+		<link>
+			<name>Core/Src/ota_status.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Appli/Core/Src/ota_status.c</locationURI>
+		</link>
+		<link>
+			<name>Core/Src/ota_screen.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Appli/Core/Src/ota_screen.c</locationURI>
+		</link>
+		<link>
+			<name>Core/Src/ota_assets.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Appli/Core/Src/ota_assets.c</locationURI>
+		</link>
+		<link>
+			<name>Core/Src/ota_asset_font.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Appli/Core/Src/ota_asset_font.c</locationURI>
+		</link>
+		<link>
+			<name>Core/Src/ota_sd_disk.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Appli/Core/Src/ota_sd_disk.c</locationURI>
 		</link>
 		<link>
 			<name>Core/Src/nx_stm32_phy_driver.c</name>
@@ -222,6 +252,26 @@
 			<name>Drivers/STM32N6xx_HAL_Driver/stm32n6xx_hal_xspi.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Drivers/STM32N6xx_HAL_Driver/Src/stm32n6xx_hal_xspi.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32N6xx_HAL_Driver/stm32n6xx_hal_sd.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/STM32N6xx_HAL_Driver/Src/stm32n6xx_hal_sd.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32N6xx_HAL_Driver/stm32n6xx_hal_sd_ex.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/STM32N6xx_HAL_Driver/Src/stm32n6xx_hal_sd_ex.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32N6xx_HAL_Driver/stm32n6xx_ll_sdmmc.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/STM32N6xx_HAL_Driver/Src/stm32n6xx_ll_sdmmc.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32N6xx_HAL_Driver/stm32n6xx_ll_dlyb.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Drivers/STM32N6xx_HAL_Driver/Src/stm32n6xx_ll_dlyb.c</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -55,6 +55,7 @@ def host_firmware_tests(compat=False):
 #include "app_ota_flash.h"
 #include "ota_boot_gate.h"
 #include "ota_wire.h"
+#include "ota_status.h"
 #define OTA_APP_FLASH_BASE 0x70000000u
 #define OTA_APP_IMAGE_START 0x70100400u
 #define OTA_APP_HEADER 0x400u
@@ -73,9 +74,10 @@ def host_firmware_tests(compat=False):
 #define EXTMEM_DISABLE 0u
 #define EXTMEM_OK 0u
 #define BM_LOG_ENABLE 0
-static uint32_t clock_ticks, map_enabled, erases, inject_failure, job_calls, fail_job;
+static uint32_t clock_ticks, map_enabled, erases, inject_failure, job_calls, fail_job, sector_yields;
 static jmp_buf jump_target;
 static uint8_t ota_rx_buffer[OTA_RX_BUFFER_SIZE];
+static uint8_t ota_write_sector[4096];
 static volatile uint32_t ota_rx_len;
 volatile uint8_t g_ota_receiving;
 volatile uint32_t g_ota_progress;
@@ -88,6 +90,7 @@ typedef struct packet { const uint8_t *data; ULONG length; struct packet *next; 
 static NX_PACKET packet_a, packet_b;
 static int packet_available, receive_gap, receive_terminal;
 static ULONG tx_time_get(void) { return clock_ticks; }
+static void tx_thread_sleep(ULONG ticks) { assert(map_enabled); clock_ticks+=ticks; sector_yields++; }
 static void ota_system_reset(void) { longjmp(jump_target, 2); }
 static void HAL_SuspendTick(void) {}
 static void __DSB(void) {}
@@ -113,6 +116,9 @@ static UINT EXTMEM_Write(UINT id, uint32_t off, const uint8_t *p, uint32_t len)
 int ota_run_agent(const OtaJob *j)
 {
     job_calls++;
+    if (!(j->flags & OTA_F_WRITE_ONLY)) {
+        assert(j->len<=4096u && j->data==ota_write_sector && !(j->target & 4095u));
+    }
     if (inject_failure || job_calls==fail_job) return -1000042;
     map_enabled=0;
     if (!(j->flags & OTA_F_WRITE_ONLY)) {
@@ -163,7 +169,7 @@ static void reset_flash(void)
     memset(flash(0),255,0x2000000u); memset((void *)(uintptr_t)0x341B0000u,0,65536);
     memset((void *)(uintptr_t)0x34000000u,0,65536);
     map_enabled=0; bm_mapped=0; erases=0; inject_failure=0; g_ota_last_slot=-1; clock_ticks=0;
-    job_calls=0;fail_job=0;
+    job_calls=0;fail_job=0;sector_yields=0;
     ota_received_profile=0;
 }
 static void test_copy(void)
@@ -322,12 +328,34 @@ static void test_large_package(void)
     puts("PASS multi-megabyte application/model install and paired rollback with clock profile");
 #endif
 }
+static void test_sector_commit(void)
+{
+    uint8_t current[128],expected[13001]; OtaStatus status;
+    reset_flash(); image(current,sizeof(current),1); image(expected,sizeof(expected),2);
+    memcpy(flash(0x100400u),current,sizeof(current));
+    memcpy(ota_rx_buffer+64,expected,sizeof(expected)); fail_job=3;
+    assert(ota_store_to_next_slot(ota_rx_buffer+64,sizeof(expected),"new",3)<0);
+    assert(sector_yields==2);
+    assert(((OtaSlotHeader *)flash(OTA_SLOT_BASE))->magic==0xffffffffu);
+    ota_slot_refresh(); assert(!g_slots[0].ready);
+    assert(!memcmp(flash(0x100400u),current,sizeof(current)));
+    /* A new attempt can overwrite the incomplete slot and commits magic last. */
+    memcpy(ota_rx_buffer+64,expected,sizeof(expected)); fail_job=0;
+    uint32_t jobs=job_calls, yields=sector_yields;
+    assert(ota_store_to_next_slot(ota_rx_buffer+64,sizeof(expected),"new",3)==0);
+    assert(job_calls-jobs==5 && sector_yields-yields==4);
+    assert(!memcmp(flash(OTA_SLOT_BASE+64),expected,sizeof(expected)));
+    assert(((OtaSlotHeader *)flash(OTA_SLOT_BASE))->magic==OTA_SLOT_MAGIC);
+    assert(ota_status_snapshot(&status));
+    assert(status.written==sizeof(expected)+64 && status.write_total==status.written);
+    puts("PASS internal SRAM sector source, mapped yields, interrupted commit and successful retry");
+}
 int main(void)
 {
     assert(VirtualAlloc((void *)(uintptr_t)0x70000000u,0x2000000u,MEM_COMMIT|MEM_RESERVE,PAGE_READWRITE));
     assert(VirtualAlloc((void *)(uintptr_t)0x341B0000u,65536,MEM_COMMIT|MEM_RESERVE,PAGE_READWRITE));
     assert(VirtualAlloc((void *)(uintptr_t)0x34000000u,65536,MEM_COMMIT|MEM_RESERVE,PAGE_READWRITE));
-    test_copy();test_receive();test_continuous_upgrade();test_recovery();test_resumed_copy();test_large_package();
+    test_copy();test_receive();test_continuous_upgrade();test_recovery();test_resumed_copy();test_large_package();test_sector_commit();
     return 0;
 }
 '''
@@ -348,7 +376,8 @@ int main(void)
     flags = ["-DLED2_PACKAGE_COMPAT"] if compat else []
     result = subprocess.run([compiler, "-O0", "-std=c11", "-DLED2_OTA_AGENT"] + flags + ["-I" + str(folder),
                              "-I" + str(ROOT / "Appli/Core/Inc"), "-I" + str(ROOT / "Secure_nsclib"),
-                             str(fixture), "-o", str(exe)], capture_output=True, text=True, env=environment)
+                             str(fixture), str(ROOT / "Appli/Core/Src/ota_status.c"),
+                             "-o", str(exe)], capture_output=True, text=True, env=environment)
     if result.returncode:
         raise RuntimeError(result.stdout + result.stderr)
     subprocess.run([str(exe)], check=True, env=environment)

@@ -13,6 +13,7 @@
 #include "../../../Secure_nsclib/ota_layout.h"
 #include "../../../Secure_nsclib/ota_reset.h"
 #include "ota_wire.h"
+#include "ota_status.h"
 
 #define PC_SERVER_IP       IP_ADDRESS(192, 168, 2, 10)   /* PC 上 OTA 服务端监听 IP */
 #define PC_SERVER_PORT     8080
@@ -41,6 +42,7 @@ static uint8_t  ota_rx_buffer[OTA_RX_BUFFER_SIZE] __attribute__((aligned(32)));
 #endif
 static volatile uint32_t ota_rx_len = 0;
 static uint32_t ota_received_profile;
+static uint8_t ota_write_sector[4096] __attribute__((aligned(32)));
 
 static NX_PACKET_POOL packet_pool;
 static NX_IP          ip_instance;
@@ -396,7 +398,7 @@ OAAI void oa_restore_mm(const OtaJob *j)
     oa_flush_fifo(j);                                   /* 清残留数据 + TC/TE */
     cr = oa_rd(j, R_CR) & ~(CR_FMODE | CR_MSEL);        /* FMODE=0, MSEL=0 */
     oa_wr(j, R_CR, cr);
-    oa_report('1', 0u, oa_rd(j, R_SR));
+    if (!(j->flags & OTA_F_QUIET)) oa_report('1', 0u, oa_rd(j, R_SR));
 
     oa_wr(j, R_CCR, CCR_INST_ADDR_DATA);
     tcr = oa_rd(j, R_TCR);
@@ -404,14 +406,14 @@ OAAI void oa_restore_mm(const OtaJob *j)
     oa_wr(j, R_TCR, tcr | 20u);
     oa_wr(j, R_IR, OPI_INSTR16(0xEE));
     oa_wr(j, R_AR, 0u);
-    oa_report('2', 0u, oa_rd(j, R_CR));
+    if (!(j->flags & OTA_F_QUIET)) oa_report('2', 0u, oa_rd(j, R_CR));
 
     cr = oa_rd(j, R_CR) & ~CR_FMODE;
     cr |= CR_FMODE;                     /* memory-mapped */
     oa_wr(j, R_CR, cr);
     oa_wr(j, R_FCR, FC_CTCF | FC_CTEF);
     __DSB(); __ISB();
-    oa_report('3', 0u, oa_rd(j, R_CR));
+    if (!(j->flags & OTA_F_QUIET)) oa_report('3', 0u, oa_rd(j, R_CR));
 }
 
 /* The ROM starts in SPI mode, while the running image uses octal DTR.
@@ -459,7 +461,7 @@ int ota_agent_main(const OtaJob *j)
     }
 
     rc = oa_abort_mm(j);
-    oa_report('a', (uint32_t)rc, oa_rd(j, R_SR));   /* 串口自报: abort 结果 */
+    if (rc || !(j->flags & OTA_F_QUIET)) oa_report('a', (uint32_t)rc, oa_rd(j, R_SR));
     if (rc != 0) goto done;
     oa_led(0, 1);                        /* 打点B: 已退出内存映射(此后 NOR 取指断裂) */
 
@@ -491,7 +493,7 @@ int ota_agent_main(const OtaJob *j)
         if (rc == 0) rc = oa_program(j, j->target, j->data, j->len);
         if ((rc == 0) && ((j->flags & OTA_F_VERIFY) != 0u))
             rc = oa_verify(j, j->target, j->data, j->len);
-        oa_report('p', (uint32_t)rc, 0u);   /* 串口自报: 擦+写+读回结果 */
+        if (rc || !(j->flags & OTA_F_QUIET)) oa_report('p', (uint32_t)rc, 0u);
     }
 
 done:
@@ -505,7 +507,7 @@ done:
         r[3] = OTA_HANDOFF_MAGIC;
         __DSB();
     }
-    oa_report('d', (uint32_t)rc, sbyte);   /* 串口自报: 最终结果(崩前必达) */
+    if (rc || !(j->flags & OTA_F_QUIET)) oa_report('d', (uint32_t)rc, sbyte);
     if ((j->flags & OTA_F_RESET) != 0u) {
         oa_led(1, 1);                    /* 生产 OTA 完成, 复位前亮点双灯 */
         oa_reset(j);
@@ -696,19 +698,30 @@ int ota_store_to_next_slot(const uint8_t *img, uint32_t img_len, const char *des
     memcpy(h->rsv, &ota_received_profile, sizeof(ota_received_profile));
 
     j.reg_base   = (uint32_t)XSPI2;
-    j.target     = off;                    /* NOR 偏移 */
-    j.len        = len;
-    j.data       = ota_rx_buffer;
-    j.flags      = OTA_F_PROGRAM | OTA_F_VERIFY;   /* 不动引导区, 不 RESET */
+    j.flags      = OTA_F_PROGRAM | OTA_F_VERIFY | OTA_F_QUIET;
     j.probe_out  = 0;
     j.res_addr   = OTA_HANDOFF_ADDR;
-    rc = ota_run_agent(&j);
-    if (rc != 0) return (rc < 0) ? rc : -rc;
+    ota_status_progress(OTA_UI_WRITING, 0u, len);
+    /* Map NOR and restore interrupts between sectors. The source for the
+     * SRAM executor is internal SRAM, independent of PSRAM and LTDC traffic. */
+    for (uint32_t done = 0u; done < len; )
+    {
+        uint32_t count = len-done;
+        if (count > sizeof(ota_write_sector)) count = sizeof(ota_write_sector);
+        memcpy(ota_write_sector, ota_rx_buffer+done, count);
+        j.target = off+done; j.len = count; j.data = ota_write_sector;
+        rc = ota_run_agent(&j);
+        if (rc != 0) return (rc < 0) ? rc : -rc;
+        done += count;
+        ota_status_progress(OTA_UI_WRITING, done, len);
+        tx_thread_sleep(1u);
+    }
     {
         uint32_t magic = OTA_SLOT_MAGIC;
+        j.target = off;
         j.len = sizeof(magic);
         j.data = (const uint8_t *)&magic;
-        j.flags = OTA_F_PROGRAM | OTA_F_VERIFY | OTA_F_WRITE_ONLY;
+        j.flags = OTA_F_PROGRAM | OTA_F_VERIFY | OTA_F_WRITE_ONLY | OTA_F_QUIET;
         rc = ota_run_agent(&j);
         if (rc != 0) return (rc < 0) ? rc : -rc;
     }
@@ -1094,6 +1107,7 @@ static void ota_send_result(NX_TCP_SOCKET *sock, int status, uint32_t slot, uint
 static int ota_receive_container(NX_TCP_SOCKET *sock, OtaWireView *view)
 {
     ULONG last_data = tx_time_get();
+    uint32_t metadata_done = 0u;
     ota_rx_len = 0u;
     memset(view, 0, sizeof(*view));
     for (;;)
@@ -1125,9 +1139,19 @@ static int ota_receive_container(NX_TCP_SOCKET *sock, OtaWireView *view)
         parsed = ota_wire_parse(ota_rx_buffer, ota_rx_len, OTA_RX_BUFFER_SIZE, view);
         if (parsed < 0) return -14;
         if (view->total != 0u)
+        {
             g_ota_progress = (uint32_t)(((uint64_t)ota_rx_len * 1000u) / view->total);
+            ota_status_progress(OTA_UI_RECEIVING, ota_rx_len, view->total);
+            if (!metadata_done && view->command == 0u && ota_rx_len >= view->image_offset)
+            {
+                if (ota_status_package(ota_rx_buffer+view->image_offset-view->desc_len,
+                                       view->desc_len, view->profile) != 0) return -16;
+                metadata_done = 1u;
+            }
+        }
         if (parsed == 1)
         {
+            ota_status_phase(OTA_UI_CHECKING, 0);
             if (view->command == 0u && view->version >= 3u &&
                 ota_crc32(ota_rx_buffer + view->image_offset, view->image_len) != view->crc)
                 return -15;
@@ -1186,20 +1210,23 @@ static VOID app_thread_entry(ULONG id)
         printf("OTA: connected, waiting for OFW2/OFW3 container\r\n");
         g_ota_receiving = 1u;
         g_ota_progress = 0u;
+        ota_status_begin();
         result = ota_receive_container(&ota_socket, &view);
         if (result == 0 && view.command == OTA_COMMAND_ROLLBACK)
         {
+            ota_status_phase(OTA_UI_ROLLBACK, 0);
             result = ota_prepare_rollback();
             slot = 0;
             reboot = 1;
         }
         else if (result == 0)
         {
+            OtaStatus info = {0};
             ota_received_profile = view.profile;
             crc = ota_crc32(ota_rx_buffer + view.image_offset, view.image_len);
+            (void)ota_status_snapshot(&info);
             slot = ota_store_to_next_slot(ota_rx_buffer + view.image_offset, view.image_len,
-                        (const char *)(ota_rx_buffer + view.image_offset - view.desc_len),
-                        view.desc_len);
+                        info.name, (uint32_t)strlen(info.name));
             if (slot < 0) result = slot;
 #if defined(LED2_OTA_AGENT)
             else
@@ -1215,6 +1242,10 @@ static VOID app_thread_entry(ULONG id)
             printf("OTA: verified Slot-%d, crc=%08lX\r\n", slot, (unsigned long)crc);
         else
             printf("OTA: transfer rejected rc=%d, waiting for another image\r\n", result);
+        ota_status_phase(result != 0 ? OTA_UI_ERROR :
+                         view.command == OTA_COMMAND_ROLLBACK ? OTA_UI_ROLLBACK : OTA_UI_READY, result);
+        /* Give the display thread time to render the final state before reset. */
+        tx_thread_sleep(TX_TIMER_TICKS_PER_SECOND / 10u);
         ota_send_result(&ota_socket, result, (uint32_t)slot, crc);
         (void)nx_tcp_socket_disconnect(&ota_socket, 2u * NX_IP_PERIODIC_RATE);
         (void)nx_tcp_client_socket_unbind(&ota_socket);

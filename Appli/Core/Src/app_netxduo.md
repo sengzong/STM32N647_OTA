@@ -13,6 +13,10 @@ The SRAM programming code copy and execution are protected against thread
 preemption, preserving the caller's interrupt state. An acknowledgement is sent
 only after verified staging and, for Agent, a committed boot request.
 The rollback command verifies the previous-image backup before queueing restore.
+Display metadata is published after the complete description arrives. Progress
+counts the received bytes and separately the verified flash bytes. Storage uses
+a 4 KiB internal SRAM bounce buffer, restores XIP/interrupts between sectors and
+yields for LVGL/network processing. Slot magic is committed after all sectors verify.
 
 All resets use the internal SRAM executor: reset the NOR out of octal DTR mode,
 restore ROM peripheral clocks per ES0620 2.2.22, then issue CMSIS SYSRESETREQ.

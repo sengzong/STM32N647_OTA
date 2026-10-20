@@ -59,9 +59,13 @@ def main():
                 "Middlewares/NETXDUO/addons/dhcp", "Middlewares/NETXDUO/common/drivers/ethernet",
                 "Middlewares/NETXDUO/ports/cortex_m55/gnu/inc", "Middlewares/NETXDUO/tsn/inc"]
     includes += [str(p.relative_to(ROOT)) for p in (ROOT / "Appli/Drivers/BSP").iterdir() if p.is_dir()]
+    lvgl = ROOT / "Middlewares/LVGL"
+    if not (lvgl / "lvgl.h").is_file() or not (lvgl / "src/lv_conf_internal.h").is_file():
+        raise RuntimeError("LVGL v8.4.0 is required: extract it into Middlewares/LVGL (lvgl.h + src)")
+    includes += ["Middlewares/LVGL", "Middlewares/FATFS"]
     base = ["-mcpu=cortex-m55", "-mthumb", "-mfpu=fpv5-d16", "-mfloat-abi=hard", "-mcmse",
             "--specs=nano.specs", "-Os", "-ffunction-sections", "-fdata-sections", "-Wall",
-            "-DUSE_HAL_DRIVER", "-DSTM32N647xx"]
+            "-DUSE_HAL_DRIVER", "-DSTM32N647xx", "-DLV_CONF_INCLUDE_SIMPLE"]
     if args.compat_package:
         base.append("-DLED2_PACKAGE_COMPAT")
     rtos = ["-DTX_SINGLE_MODE_SECURE", "-DTX_INCLUDE_USER_DEFINE_FILE", "-DNX_INCLUDE_USER_DEFINE_FILE"]
@@ -80,6 +84,11 @@ def main():
     common = hal + middleware + [core / n for n in common_names]
     common += [ROOT / "Appli/Core/Startup/startup_stm32n647x0hxq.s"]
     common += [ROOT / f"Appli/Drivers/BSP/{name}/{name.lower()}.c" for name in ("UART", "YT8512C")]
+    common += sorted((lvgl / "src").rglob("*.c"))
+    common += [ROOT/"Middlewares/FATFS/ff.c",ROOT/"Middlewares/FATFS/ffunicode.c"]
+    common += [ROOT/("Drivers/STM32N6xx_HAL_Driver/Src/"+name) for name in
+               ("stm32n6xx_hal_sd.c", "stm32n6xx_hal_sd_ex.c", "stm32n6xx_ll_sdmmc.c", "stm32n6xx_ll_dlyb.c")]
+    common=list(dict.fromkeys(common))
 
     def compile_many(sources, flags, paths, folder):
         folder.mkdir(parents=True, exist_ok=True)
@@ -112,6 +121,15 @@ def main():
         symbols = run([nm, "-S", elf])
         (directory / "symbols.txt").write_text(symbols, encoding="utf-8")
         if name in ("LED_2_Appli", "LED_2_Agent"):
+            table={p[-1]:int(p[0],16) for line in symbols.splitlines()
+                   if (p:=line.split()) and re.fullmatch(r"[0-9a-fA-F]+",p[0])}
+            if table["_end"]>0x341B0000 or table["_sstack"]<0x341B1000:
+                raise RuntimeError("Internal data/stack overlaps retained OTA mailboxes: "+name)
+            if "resource_cache" in table:
+                receive_start=0x90000000
+                receive_end=receive_start+(0xA00000 if args.compat_package else 0)
+                if table["resource_cache"]<receive_end or table["resource_cache"]+0x40000>0x92000000:
+                    raise RuntimeError("SD asset cache overlaps receive buffer or PSRAM boundary: "+name)
             frame = next(line.split() for line in symbols.splitlines()
                          if line.split()[-1:] == ["ota_agent_main"])
             if int(frame[0], 16) % 32 + int(frame[1], 16) > 16384:
@@ -130,7 +148,10 @@ def main():
     app_objects = compile_many(app_sources, rtos, includes, OUT / "app-objects")
     app_bin, _ = link("LED_2_Appli", common_objects + app_objects,
                       "Appli/STM32N647X0HXQ_ROMxspi2_RAMxspi1.ld")
-    agent_sources = sorted((ROOT / "Agent/Core/Src").glob("*.c")) + [core / "app_netxduo.c"]
+    agent_sources = sorted((ROOT / "Agent/Core/Src").glob("*.c"))
+    agent_sources += [core / name for name in ("app_netxduo.c", "ota_status.c", "ota_screen.c",
+                                              "ota_assets.c", "ota_asset_font.c", "ota_sd_disk.c")]
+    agent_sources += [ROOT / "Appli/Drivers/BSP/RGBLCD/rgblcd.c"]
     agent_objects = compile_many(agent_sources, rtos + ["-DLED2_OTA_AGENT"], includes, OUT / "agent-objects")
     agent_script = ROOT / "Agent/STM32N647X0HXQ_ROMxspi2_RAMxspi1_agent.ld"
     agent_base = 0x71F00400 if args.compat_package else 0x71400400
@@ -196,6 +217,15 @@ def main():
         prefix = bytearray(b"\xff" * 0x400)
         metadata = struct.pack("<IIIIIII", 0x3254524F, 0, len(raw), zlib.crc32(raw), 0, 0, 0)
         prefix[:32] = metadata + struct.pack("<I", zlib.crc32(metadata))
+        # A direct Programmer application update must refresh its runtime
+        # length/profile too: FSBL uses this length when creating a rollback.
+        # Keep the raw appli.hex suitable for the OTA sender's APP_BASE check.
+        update = publish / "management_update.hex"
+        app_parts = hex_segments((publish / "appli.hex").read_text(encoding="ascii"))
+        update_parts = [(0x70100000, bytes(prefix))] + app_parts
+        write_hex(update_parts, update)
+        manifest[update.name] = {"base": "0x70100000", "bytes": sum(len(data) for _, data in update_parts),
+                                 "sha256": hashlib.sha256(update.read_bytes()).hexdigest()}
         parts += [(0x70100000, bytes(prefix))]
         parts += [(addr, b"\xff" * 4096) for addr in (0x700FC000, 0x70B00000, 0x71500000)]
         installer = publish / "initial_install.hex"

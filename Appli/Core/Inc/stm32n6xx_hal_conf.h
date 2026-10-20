@@ -69,7 +69,9 @@ extern "C" {
 /*#define HAL_RNG_MODULE_ENABLED   */
 /*#define HAL_RTC_MODULE_ENABLED   */
 /*#define HAL_SAI_MODULE_ENABLED   */
-/*#define HAL_SD_MODULE_ENABLED   */
+#define HAL_SD_MODULE_ENABLED
+/* SD assets are optional; do not wait indefinitely for a faulty card. */
+#define SDMMC_SWDATATIMEOUT 250U
 /*#define HAL_SDRAM_MODULE_ENABLED   */
 /*#define HAL_SMARTCARD_MODULE_ENABLED   */
 /*#define HAL_SMBUS_MODULE_ENABLED   */

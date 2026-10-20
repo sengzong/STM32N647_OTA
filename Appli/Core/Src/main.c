@@ -180,10 +180,10 @@ int main(void)
   /* Release/FSBL 引导：PSRAM 已由 FSBL 映射到 0x90000000，App 直接用，不再 init */
 #endif
   rgblcd_init();                          /* 初始化RGB LCD（提前，尽早覆盖上电花屏） */
-  rgblcd_clear(WHITE);                    /* 立刻刷白屏 */
+  rgblcd_clear(0x08A4);                   /* Match the LVGL dark startup background. */
   SCB_CleanDCache();                      /* 保险调用 */
   uart_init(115200);                      /* printf over USART1 */
-  printf("STM32N647 LED_2 - OTA RTOS boot  [FW-TARGET v3]\r\n");
+  printf("STM32N647 LED_2 - OTA RTOS boot  [FW-LVGL v4]\r\n");
   printf("OTA probe: 0x%08X (EXPECT 0x314F5441 = .ota_ram SRAM agent OK)\r\n", (unsigned)ota_probe_run());
   ota_dbg_ladder();               /* 真机分步 OTA 测试: 级别见 app_netxduo.c OTA_BOOT_LADDER_LEVEL */
   printf("ETH MAC init...\r\n");

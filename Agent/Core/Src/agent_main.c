@@ -4,8 +4,8 @@
   * @brief   Resident OTA agent - entry point.
   *
   * WHERE THIS IMAGE LIVES
-  *   NOR 0x1400000 .. 0x14FFC00 (partition reserved by the boot manager),
-  *   image entry 0x71400400, EF 0x71400400.
+  *   Compatibility layout: NOR offset 0x1F00000, image entry 0x71F00400.
+  *   Legacy layout: NOR offset 0x1400000, image entry 0x71400400.
   *
   * WHY IT EXISTS
   *   The boot area holds exactly one application. When a freshly copied image
@@ -17,7 +17,7 @@
   *
   * WHAT IT MAY AND MAY NOT DO
   *   May  : bring up ETH + NetXDuo, receive an OFW2 container over TCP, write
-  *          the image into one of the three repository slots, and ask the FSBL
+  *          the image into the sole latest-image staging area, and ask the FSBL
   *          to copy that slot into the boot area (via the 32-byte BOOTREC
   *          record + reset).
   *   May not: erase or program the boot area itself. That branch of
@@ -25,10 +25,9 @@
   *          worst case is a bad slot - never a bad boot area.
   *
   * WHAT IS DELIBERATELY MISSING
-  *   RGB LCD, touch controller, DMA2D, camera/DCMIPP and the framebuffer.
-  *   The whole point of this image is to be reachable when the normal
-  *   application does not start, so it stays as small and as boring as
-  *   possible: GPIO (status LEDs), USART1 (log), ETH1 + PHY.
+  *   Touch and camera/DCMIPP remain absent. LTDC/DMA2D initialize the existing
+  *   RGB panel; LVGL renders package metadata and receive/write progress using
+  *   an internal SRAM framebuffer, independently of the installed application.
   *
   * NOTE: comments are ASCII-only on purpose (GBK console host).
   ******************************************************************************
@@ -70,6 +69,7 @@ ETH_TxPacketConfig TxConfig;
 DCMIPP_HandleTypeDef hdcmipp;   /* referenced by stm32n6xx_it.c (shared source) */
 ETH_HandleTypeDef    heth1;      /* referenced by nx_stm32_eth_config.h        */
 UART_HandleTypeDef   huart1;     /* referenced by Drivers/BSP/UART/uart.c      */
+void agent_display_hw_init(void);
 
 /* USER CODE BEGIN PV */
 volatile uint8_t g_rtos_started = 0;     /* SysTick_Handler gates _tx_timer_interrupt on this */
@@ -129,10 +129,11 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   SystemIsolation_Config();
+  agent_display_hw_init();
   /* USER CODE BEGIN 2 */
   uart_init(115200);                      /* printf over USART1 (PE5/PE6, AF7) */
   ota_gateway_init();
-  printf("\r\nSTM32N647 LED_2 - resident OTA AGENT  [AGENT-TARGET v2]\r\n");
+  printf("\r\nSTM32N647 LED_2 - resident OTA AGENT  [AGENT-LVGL-SD v4]\r\n");
   printf("NOR partition 0x%07lX, entry 0x%08lX\r\n", (unsigned long)OTA_LAYOUT_AGENT,
          (unsigned long)(0x70000000u + OTA_LAYOUT_AGENT + 0x400u));
 #if defined(LED2_PACKAGE_COMPAT)
@@ -362,7 +363,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PA3 (PHY reset) */
+  /*Configure GPIO pin : PA3 (LCD backlight) */
   GPIO_InitStruct.Pin = GPIO_PIN_3;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;

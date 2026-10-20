@@ -80,12 +80,26 @@ def make_rollback():
     return struct.pack("<IIII", CONTROL_MAGIC, 1, 0, 0), 0
 
 
-def make_transfer(filename, data, desc):
+def make_transfer(filename, data, desc, firmware_version=None):
+    from pathlib import Path
+    from ota_metadata import encode_metadata, decode_metadata
     if filename.lower().endswith(".ota"):
         from ota_package import unpack_package, make_package
         image, profile, embedded_desc = unpack_package(data)
-        payload = make_package(image, profile, desc or embedded_desc)
+        metadata = decode_metadata(embedded_desc)
+        note = desc or (metadata["description"] if metadata else embedded_desc)
+        if firmware_version is not None:
+            model = metadata["model"] if metadata else (1 if profile == 2 and len(image) > 0xFFC00 else 2)
+            if profile == 1 and not metadata:
+                model = 0
+            note = encode_metadata(metadata["name"] if metadata else Path(filename).stem,
+                                   firmware_version, model, note)
+        elif metadata:
+            note = encode_metadata(metadata["name"], metadata["version"], metadata["model"], note)
+        payload = make_package(image, profile, note)
         return payload, zlib.crc32(image)
+    if firmware_version is not None:
+        desc = encode_metadata(Path(filename).stem, firmware_version, 2, desc)
     return make_container(load_image(filename, data), desc)
 
 

@@ -10,6 +10,19 @@
 当前保留的 991 实时版在 Binary/991_realtime_30；旧试验烧录文件已清理。
 完整文件用途见 [Binary/README.md](Binary/README.md)。
 
+需要自行合成完整安装文件时，解压 [便携合成工具](Portable/InitialInstallMerger.zip)，
+双击 InitialInstallMerger.exe，选择组件后生成 initial_install.hex；无需安装 Python。
+
+兼容 Agent 现增加 LVGL 接收/写入进度画面，显示固件名称、600/800MHz、模型状态和
+网页手填版本；留空版本显示“未提供”。SD 卡的字体和主题资源复制方式见
+[SD_Card/README.md](SD_Card/README.md)。已装兼容 FSBL 时只更新 Binary/compat/agent.hex，
+保留当前应用和回滚数据。此版已通过编译与主机检查，实际 LCD/SD 卡仍待上板验证。
+
+管理应用的白色固件列表及 Yes 确认页现也改为 LVGL 深色界面，沿用 SD 卡主题。
+用 Programmer 更换此页面烧 [Binary/compat/management_update.hex](Binary/compat/management_update.hex)，已包含应用及配套启动信息，串口标识
+FW-LVGL v4；单刷 Agent 不会更换管理应用。两次点击确认的安装流程保留。
+合并文件 initial_install.hex 已包含新版管理应用和 Agent。
+
 以下原有说明对应根目录 Binary 中的旧 512KB 布局恢复版本，不能与 compat 混烧。
 
 当前版本采用“最新固件暂存 + 上一版回滚备份”。每次启动先进入独立 Agent 的 10 秒升级窗口，因此应用没有网口代码也能继续升级。首次需更新 FSBL、Agent 和应用，操作见 [OTA_GUIDE.md](OTA_GUIDE.md)。

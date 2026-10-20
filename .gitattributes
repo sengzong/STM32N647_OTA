@@ -2,3 +2,7 @@
 Binary/** -text
 Binary/** whitespace=cr-at-eol
 Binary/**/*.hex -diff
+Portable/** -text
+Portable/**/*.hex -diff
+Portable/**/*.exe -diff
+Portable/*.zip -diff

@@ -1,6 +1,7 @@
 # 独立 OTA Agent
 
-Agent 位于 NOR 偏移 `0x1400000`，入口 `0x71400400`，不随应用更新被覆盖。
+兼容布局 Agent 位于 NOR 偏移 `0x1F00000`，入口 `0x71F00400`，不随应用更新被覆盖。
+旧 512KB 布局的入口为 `0x71400400`，两套地址不能混烧。
 
 当前方案：**最新固件暂存区 + 上一版回滚区**。详细操作见 [OTA_GUIDE.md](../OTA_GUIDE.md)。
 
@@ -10,8 +11,11 @@ Agent 位于 NOR 偏移 `0x1400000`，入口 `0x71400400`，不随应用更新�
 没有任务时，Agent 写一次性 SRAM 标志并软复位，让 FSBL 直接启动应用一次。
 应用损坏、安装失败或显式请求救援时，Agent 持续等待。
 
-接收开始后允许继续传输；连续 30 秒没有数据则中止。本程序不初始化屏幕，
-等待期间屏幕可能保持原样或无画面，进入应用后由应用处理显示。
+接收开始后允许继续传输；连续 30 秒没有数据则中止。LVGL 进度画面显示
+包含包名称、目标 CPU 频率、模型信息、手填版本号和接收/写入进度。
+空版本显示“未提供”。完整中文字库和主题优先从 SD 卡加载，缺卡时使用内置界面，
+资源复制方式见 [SD_Card/README.md](../SD_Card/README.md)。本版已完成 ARM 编译和
+主机渲染/协议/存储检查，尚未烧入板子验证 LCD 和真实 SD 卡。
 
 ## 安装与回滚
 
@@ -30,8 +34,9 @@ App 与 Agent 的 OTA 代码修改后应一起重建。
 
 ```powershell
 python tools/test_ota.py
-python tools/build_ota.py
+python tools/build_ota.py --compat-package
 ```
 
-构建产物为 `Binary/agent.hex`。初次启用新方案需同时更新 FSBL、Agent 和应用。
-串口横幅为 `resident OTA AGENT [AGENT-TARGET v2]`。
+兼容构建产物为 `Binary/compat/agent.hex`。当前已装兼容 FSBL 的板子可只更新此文件，
+保留当前应用和回滚数据；全新安装仍使用 Binary/compat/initial_install.hex。
+串口横幅为 `resident OTA AGENT [AGENT-LVGL-SD v4]`。

@@ -19,3 +19,8 @@ Progress counts bytes submitted by the PC. It does not confirm reception or stor
 Only the verified board acknowledgement changes the result to confirmed completion.
 After changing ota_protocol.py, restart the web process so its imported sender is
 updated. The board does not need reflashing for a PC sender-only change.
+
+The optional firmware version input is passed independently from the description.
+An empty value is sent as empty, so the updated LVGL receiver shows 未提供. Display
+metadata travels in the existing description region; the image/profile is preserved.
+The LCD feature itself requires the rebuilt LVGL-capable Agent, not just a web restart.
